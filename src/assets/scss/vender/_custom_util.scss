@@ -1,0 +1,15 @@
+
+/* background-color 
+ * add responsive 
+ */
+$utilities: map-merge(
+  $utilities,
+  (
+    "background-color": map-merge(
+      map-get($utilities, "background-color"),
+      (
+        responsive: true,
+      ),
+    ),
+  )
+);

@@ -8,9 +8,12 @@
 // scss-docs-start import-stack
 // Configuration
 @import "~bootstrap/scss/functions";
-@import "./variables"; // @import "~bootstrap/scss/variables";
+@import "~@/assets/scss/helpers/_variables"; // @import "~bootstrap/scss/variables";
 @import "~bootstrap/scss/mixins";
 @import "~bootstrap/scss/utilities";
+
+// custom
+@import "~@/assets/scss/vender/custom_util";
 
 // Layout & components
 @import "~bootstrap/scss/root";

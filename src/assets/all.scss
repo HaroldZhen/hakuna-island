@@ -1,0 +1,10 @@
+// vender
+@import "@/assets/scss/vender/_bootstrap5";
+@import "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css";
+
+// components
+@import '@/assets/scss/components/_process';
+@import '@/assets/scss/components/_cart';
+
+// custom
+@import '@/assets/scss/layout/_custom';

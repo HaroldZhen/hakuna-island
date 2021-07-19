@@ -18,6 +18,21 @@ $spacers: (
   9: $spacer * 4,
 );
 
+$link-decoration: none;
+
+$puerto-rico: #67b5b6;
+$puerto-rico-100: #edf9f6;
+// $puerto-rico-100: #A6DCCF;
+$puerto-rico-200: #639F8D;
+$puerto-rico-300: #498471;
+$white: #FFFFFF;
+$white-100: #EAEAEA;
+$white-200: #D5D5D5;
+$white-300: #BABABA;
+
+$primary: $puerto-rico;
+$light: $puerto-rico-100;
+
 // Color system
 
 // scss-docs-start gray-color-variables
