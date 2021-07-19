@@ -15,7 +15,7 @@ import router from './router';
 import { date, currency, dateToTimestamp } from './methods/filters';
 
 import 'bootstrap';
-// import 'bootstrap-icons/font/bootstrap-icons.css';
+import 'material-icons/iconfont/material-icons.css';
 
 configure({
   generateMessage: localize({ zh_TW: zhTW }), // 載入繁體中文語系
