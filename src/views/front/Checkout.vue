@@ -1,45 +1,6 @@
 <template>
-  <div class="position-relative d-flex align-items-center justify-content-center mt-9" style="min-height: 400px;">
-    <div
-      class="position-absolute"
-      style="top:0; bottom: 0; left: 0; right: 0; background-image: url(https://images.unsplash.com/photo-1573906445622-3e98d4445256?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1950&q=80); background-position: center center; opacity: 0.5;"
-    ></div>
-    <h2 class="fw-bold">Checkout</h2>
-  </div>
-  <section class="process py-6">
-    <div class="container">
-      <div class="col-12 col-md-8 mx-auto position-relative">
-        <ul class="d-flex justify-content-between align-items-center">
-          <li class="process__step active">
-            <span><span class="text h4">1</span></span>
-            <p class="mb-0">購物車</p>
-          </li>
-          <li class="process__step active">
-            <span><span class="text h4">2</span></span>
-            <p class="mb-0">填寫資料</p>
-          </li>
-          <li class="process__step">
-            <span><span class="text h4">3</span></span>
-            <p class="mb-0">確認付款</p>
-          </li>
-          <li class="process__step">
-            <span><span class="text h4">4</span></span>
-            <p class="mb-0">完成訂單</p>
-          </li>
-        </ul>
-        <div class="progress process__wrap">
-          <div
-            class="progress-bar"
-            role="progressbar"
-            style="width: 35%;"
-            aria-valuenow="25"
-            aria-valuemin="0"
-            aria-valuemax="100"
-          ></div>
-        </div>
-      </div>
-    </div>
-  </section>
+  <FrontBanner></FrontBanner>
+  <FrontProgressStep stepName="checkout" ></FrontProgressStep>
   <section class="cart__wrap mb-3">
     <div class="container">
       <div class="accordion bg-white" id="accordionPanelsStayOpenExample">
@@ -310,5 +271,13 @@
   </section>
 </template>
 <script>
-export default {};
+import FrontBanner from '@/components/FrontBanner.vue';
+import FrontProgressStep from '@/components/FrontProgressStep.vue';
+
+export default {
+  components: {
+    FrontBanner,
+    FrontProgressStep,
+  },
+};
 </script>

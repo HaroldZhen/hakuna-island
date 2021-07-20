@@ -1,105 +1,46 @@
 <template>
-  <div class="position-relative d-flex align-items-center justify-content-center" style="min-height: 400px;">
-    <div
-      class="position-absolute"
-      style="top:0; bottom: 0; left: 0; right: 0; background-image: url(https://images.unsplash.com/photo-1480399129128-2066acb5009e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80); background-position: center center; opacity: 0.5;"
-    ></div>
-    <h2 class="fw-bold">Lorem ipsum.</h2>
-  </div>
+  <FrontBanner></FrontBanner>
+  <FrontProgressStep stepName="order"></FrontProgressStep>
   <div class="container mt-md-5 mt-3 mb-7">
-    <div class="row justify-content-center">
-      <div class="col-md-10">
-        <h3 class="fw-bold mb-4 pt-3">Checkout</h3>
-      </div>
-    </div>
-    <div class="row flex-row-reverse justify-content-center pb-5">
-      <div class="col-md-4">
-        <div class="border p-4 mb-4">
-          <div class="d-flex">
-            <img
-              src="https://images.unsplash.com/photo-1502743780242-f10d2ce370f3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1916&q=80"
-              alt=""
-              class="me-2"
-              style="width: 48px; height: 48px; object-fit: cover"
-            />
-            <div class="w-100">
-              <div class="d-flex justify-content-between">
-                <p class="mb-0 fw-bold">Lorem ipsum</p>
-                <p class="mb-0">NT$12,000</p>
+    <div class="position-relative d-flex">
+      <div class="container d-flex flex-column" style="min-height: 60vh;">
+        <div class="row my-auto pb-7">
+          <div class="col-md-4 d-flex flex-column">
+            <div class="my-auto">
+              <p class="h4">感謝您的訂購，歡迎您再次光臨!</p>
+              <p>訂單完成時間:2021-07-19 20:39</p>
+              <p>您的訂單編號:-Meyi1wQtuAc5tahi1iF</p>
+              <p>您的訂單金額:$57,000</p>
+              <div>
+                您的訂單將會在3個工作天內處理完成。<br />
+                如遇國定連假、寒暑假旺季則在5個工作天內處理完成。<br />
+                如有其它變更需求，請致電客服0800-000-000將有專員為您服務。
               </div>
-              <p class="mb-0 fw-bold">x1</p>
+
+              <a href="./index.html" class="btn btn-outline-primary mt-4 px-5">在去逛逛</a>
             </div>
-          </div>
-          <div class="d-flex mt-2">
-            <img
-              src="https://images.unsplash.com/photo-1502743780242-f10d2ce370f3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1916&q=80"
-              alt=""
-              class="me-2"
-              style="width: 48px; height: 48px; object-fit: cover"
-            />
-            <div class="w-100">
-              <div class="d-flex justify-content-between">
-                <p class="mb-0 fw-bold">Lorem ipsum</p>
-                <p class="mb-0">NT$12,000</p>
-              </div>
-              <p class="mb-0 fw-bold">x1</p>
-            </div>
-          </div>
-          <table class="table mt-4 border-top border-bottom text-muted">
-            <tbody>
-              <tr>
-                <th scope="row" class="border-0 px-0 pt-4 font-weight-normal">Subtotal</th>
-                <td class="text-end border-0 px-0 pt-4">NT$24,000</td>
-              </tr>
-              <tr>
-                <th scope="row" class="border-0 px-0 pt-0 pb-4 font-weight-normal">Payment</th>
-                <td class="text-end border-0 px-0 pt-0 pb-4">ApplePay</td>
-              </tr>
-            </tbody>
-          </table>
-          <div class="d-flex justify-content-between mt-4">
-            <p class="mb-0 h4 fw-bold">Total</p>
-            <p class="mb-0 h4 fw-bold">NT$24,000</p>
           </div>
         </div>
       </div>
-      <div class="col-md-6">
-        <form>
-          <p>Contact information</p>
-          <div class="mb-0">
-            <label for="ContactMail" class="text-muted mb-0">Email</label>
-            <input
-              type="email"
-              class="form-control"
-              id="ContactMail"
-              aria-describedby="emailHelp"
-              placeholder="example@gmail.com"
-            />
-          </div>
-          <p class="mt-4">Shipping address</p>
-          <div class="mb-2">
-            <label for="ContactName" class="text-muted mb-0">Name</label>
-            <input type="text" class="form-control" id="ContactName" placeholder="Carmen A. Rose" />
-          </div>
-          <div class="mb-2">
-            <label for="ContactPhone" class="text-muted mb-0">Phone</label>
-            <input type="text" class="form-control" id="ContactPhone" placeholder="Password" />
-          </div>
-          <div class="mb-2">
-            <label for="ContactMessage" class="text-muted mb-0">Message</label>
-            <textarea class="form-control" rows="3" id="ContactMessage" placeholder="message ... "></textarea>
-          </div>
-        </form>
-        <div class="d-flex flex-column-reverse flex-md-row mt-4 justify-content-between align-items-end w-100">
-          <a href="./product.html" class="text-dark mt-md-0 mt-3"
-            ><i class="fas fa-chevron-left me-2"></i> Lorem ipsum</a
-          >
-          <a href="./checkout-1.html" class="btn btn-dark py-3 px-7">Lorem ipsum</a>
-        </div>
-      </div>
+      <div
+        class="w-md-50 w-100 position-absolute opacity-1"
+        style="z-index: -1; min-height: 60vh; right: 0; background-image: url(https://images.unsplash.com/photo-1480399129128-2066acb5009e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80);
+    background-position: center center;"
+      ></div>
     </div>
   </div>
+  <FrontProductAdHot></FrontProductAdHot>
 </template>
 <script>
-export default {};
+import FrontBanner from '@/components/FrontBanner.vue';
+import FrontProgressStep from '@/components/FrontProgressStep.vue';
+import FrontProductAdHot from '@/components/FrontProductAdHot.vue';
+
+export default {
+  components: {
+    FrontBanner,
+    FrontProgressStep,
+    FrontProductAdHot,
+  },
+};
 </script>

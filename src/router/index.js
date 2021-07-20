@@ -7,18 +7,17 @@ const routes = [
   // http://localhost:8080/#/product
   // http://localhost:8080/#/cart
   // http://localhost:8080/#/checkout
-  // http://localhost:8080/#/order
   // http://localhost:8080/#/payment
-  // http://localhost:8080/#/success
+  // http://localhost:8080/#/order
+  {
+    path: '/',
+    name: 'front.index',
+    component: () => import('@/views/front/Home.vue'),
+  },
   {
     path: '/',
     component: () => import('@/components/layout/FrontLayout.vue'),
     children: [
-      {
-        path: '',
-        name: 'front.index',
-        component: () => import('@/views/front/Home.vue'),
-      },
       {
         path: 'products',
         name: 'front.products',
@@ -48,11 +47,6 @@ const routes = [
         path: 'payment',
         name: 'front.payment',
         component: () => import('@/views/front/Payment.vue'),
-      },
-      {
-        path: 'success',
-        name: 'front.success',
-        component: () => import('@/views/front/Success.vue'),
       },
     ],
   },

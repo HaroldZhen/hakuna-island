@@ -29,9 +29,12 @@ $white: #FFFFFF;
 $white-100: #EAEAEA;
 $white-200: #D5D5D5;
 $white-300: #BABABA;
+$black:    #000;
 
 $primary: $puerto-rico;
 $light: $puerto-rico-100;
+
+// ==========================
 
 // Color system
 
@@ -70,7 +73,7 @@ $blue:    #0d6efd !default;
 $indigo:  #6610f2 !default;
 $purple:  #6f42c1 !default;
 $pink:    #d63384 !default;
-$red:     #dc3545 !default;
+$red:     #dc3545 !default; //#ee4d2d
 $orange:  #fd7e14 !default;
 $yellow:  #ffc107 !default;
 $green:   #198754 !default;

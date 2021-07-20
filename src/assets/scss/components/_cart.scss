@@ -1,4 +1,31 @@
 .cart {
+  &__icon{
+    position: relative;
+  }
+  &__num{
+    // position: absolute;
+    // background-color: $red;
+    // top: 2px;
+    // left: 43%;
+    // font-size: 0.8rem;
+    // line-height: 1.2;
+    // text-align: center;
+    // padding: 0.05rem 0.28rem;
+    // border-radius: 50%;
+    
+    position: absolute;
+    top: 2px;
+    right: 5px;
+    display: block;
+    width: 1.2rem;
+    height: 1.2rem;
+    line-height: 1.25rem;
+    font-size: .75rem;
+    border-radius: 50%;
+    background-color: #dc3545;
+    color: $white;
+    text-align: center;
+  }
   &__item {
     @include media-breakpoint-down(md) {
       height: 180px;
@@ -48,4 +75,18 @@
       order: 5;
     }
   }
+}
+
+// .shopping__title{
+//   color: $puerto-rico-300;
+// }
+.shopping__list{
+  max-height: calc(100vh - 38px - 69px - 64px );
+  overflow-x:hidden;
+  overflow-y:auto;
+}
+.shopping__image{
+  width: 70px;
+  height: 70px;
+  overflow: hidden;
 }

@@ -1,0 +1,27 @@
+.scroll-top {
+  display: none;
+  background-color: rgba($puerto-rico, 0.8);
+  border-radius: 50%;
+  color: $white;
+  position: fixed;
+  bottom: 25px;
+  right: 20px;
+  width: 32px;
+  height: 32px;
+  z-index: $zindex-fixed;
+  box-shadow: $box-shadow-sm;
+  transition: display .8s;
+  &.active{
+    display: block;
+  }
+  .scroll-top__icon{
+    position: absolute;
+    top: -5px;
+    font-size: 1.75rem;
+  }
+  .scroll-top__text {
+    font-size: 0.8rem;
+    padding-top: 10px;
+  }
+
+}

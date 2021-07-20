@@ -1,29 +1,15 @@
 <template>
-  <div class="position-relative d-flex align-items-center justify-content-center mt-9" style="min-height: 400px;">
-    <div
-      class="position-absolute"
-      style="top:0; bottom: 0; left: 0; right: 0; background-image: url(https://images.unsplash.com/photo-1573906445622-3e98d4445256?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1950&q=80); background-position: center center; opacity: 0.5;"
-    ></div>
-    <h2 class="fw-bold">Products</h2>
-  </div>
-  <div class="breadcrumb mt-3">
-    <div class="container">
-      <nav aria-label="breadcrumb">
-        <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="#">Home</a></li>
-          <li class="breadcrumb-item active" aria-current="page">Library</li>
-        </ol>
-      </nav>
-    </div>
-  </div>
-  <div class="container mt-md-5 mt-3 mb-7">
+  <FrontBanner></FrontBanner>
+  <FrontBreadcrumb>
+    <li class="breadcrumb-item active" aria-current="page">Product</li>
+  </FrontBreadcrumb>
+  <div class="container mt-3 mb-7">
     <div class="row">
-      <div class="col-md-4">
+      <div class="col-md-2">
         <div class="accordion border border-bottom border-top-0 border-start-0 border-end-0 mb-3" id="accordionExample">
           <div class="card border-0">
             <div
-              class="card-header px-0 py-4 bg-white border border-bottom-0 border-top
-              border-start-0 border-end-0 rounded-0"
+              class="card-header px-0 bg-white"
               id="headingOne"
               data-bs-toggle="collapse"
               data-bs-target="#collapseOne"
@@ -103,9 +89,14 @@
           </div>
         </div>
       </div>
-      <div class="col-md-8">
+      <div class="col-md-10">
+        <div class="d-flex mb-2">
+          <h2 class="h3 me-auto">全部商品</h2>
+          <span class="p-2 border-bottom border-1">商品排序</span>
+          <span class="p-2 ms-3 border-bottom border-1">每頁顯示</span>
+        </div>
         <div class="row">
-          <div class="col-md-6">
+          <div v-for="n in 10" :key="n" class="col-md-4">
             <div class="card border-0 mb-4 position-relative position-relative">
               <img
                 src="https://images.unsplash.com/photo-1591843336741-9f1238f66758?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1867&q=80"
@@ -116,140 +107,9 @@
                 <i class="far fa-heart position-absolute" style="right: 16px; top: 16px"></i>
               </a>
               <div class="card-body p-0">
-                <h4 class="mb-0 mt-3"><a href="./detail.html">Lorem ipsum</a></h4>
-                <p class="card-text mb-0">
-                  NT$1,080 <span class="text-muted "><del>NT$1,200</del></span>
-                </p>
-                <p class="text-muted mt-3"></p>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div class="card border-0 mb-4 position-relative position-relative">
-              <img
-                src="https://images.unsplash.com/photo-1591843336741-9f1238f66758?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1867&q=80"
-                class="card-img-top rounded-0"
-                alt="..."
-              />
-              <a href="#" class="text-dark">
-                <i class="far fa-heart position-absolute" style="right: 16px; top: 16px"></i>
-              </a>
-              <div class="card-body p-0">
-                <h4 class="mb-0 mt-3"><a href="./detail.html">Lorem ipsum</a></h4>
-                <p class="card-text mb-0">
-                  NT$1,080 <span class="text-muted "><del>NT$1,200</del></span>
-                </p>
-                <p class="text-muted mt-3"></p>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div class="card border-0 mb-4 position-relative position-relative">
-              <img
-                src="https://images.unsplash.com/photo-1591843336741-9f1238f66758?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1867&q=80"
-                class="card-img-top rounded-0"
-                alt="..."
-              />
-              <a href="#" class="text-dark">
-                <i class="far fa-heart position-absolute" style="right: 16px; top: 16px"></i>
-              </a>
-              <div class="card-body p-0">
-                <h4 class="mb-0 mt-3"><a href="./detail.html">Lorem ipsum</a></h4>
-                <p class="card-text mb-0">
-                  NT$1,080 <span class="text-muted "><del>NT$1,200</del></span>
-                </p>
-                <p class="text-muted mt-3"></p>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div class="card border-0 mb-4 position-relative position-relative">
-              <img
-                src="https://images.unsplash.com/photo-1591843336741-9f1238f66758?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1867&q=80"
-                class="card-img-top rounded-0"
-                alt="..."
-              />
-              <a href="#" class="text-dark">
-                <i class="far fa-heart position-absolute" style="right: 16px; top: 16px"></i>
-              </a>
-              <div class="card-body p-0">
-                <h4 class="mb-0 mt-3"><a href="./detail.html">Lorem ipsum</a></h4>
-                <p class="card-text mb-0">
-                  NT$1,080 <span class="text-muted "><del>NT$1,200</del></span>
-                </p>
-                <p class="text-muted mt-3"></p>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div class="card border-0 mb-4 position-relative position-relative">
-              <img
-                src="https://images.unsplash.com/photo-1591843336741-9f1238f66758?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1867&q=80"
-                class="card-img-top rounded-0"
-                alt="..."
-              />
-              <a href="#" class="text-dark">
-                <i class="far fa-heart position-absolute" style="right: 16px; top: 16px"></i>
-              </a>
-              <div class="card-body p-0">
-                <h4 class="mb-0 mt-3"><a href="./detail.html">Lorem ipsum</a></h4>
-                <p class="card-text mb-0">
-                  NT$1,080 <span class="text-muted "><del>NT$1,200</del></span>
-                </p>
-                <p class="text-muted mt-3"></p>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div class="card border-0 mb-4 position-relative position-relative">
-              <img
-                src="https://images.unsplash.com/photo-1591843336741-9f1238f66758?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1867&q=80"
-                class="card-img-top rounded-0"
-                alt="..."
-              />
-              <a href="#" class="text-dark">
-                <i class="far fa-heart position-absolute" style="right: 16px; top: 16px"></i>
-              </a>
-              <div class="card-body p-0">
-                <h4 class="mb-0 mt-3"><a href="./detail.html">Lorem ipsum</a></h4>
-                <p class="card-text mb-0">
-                  NT$1,080 <span class="text-muted "><del>NT$1,200</del></span>
-                </p>
-                <p class="text-muted mt-3"></p>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div class="card border-0 mb-4 position-relative position-relative">
-              <img
-                src="https://images.unsplash.com/photo-1591843336741-9f1238f66758?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1867&q=80"
-                class="card-img-top rounded-0"
-                alt="..."
-              />
-              <a href="#" class="text-dark">
-                <i class="far fa-heart position-absolute" style="right: 16px; top: 16px"></i>
-              </a>
-              <div class="card-body p-0">
-                <h4 class="mb-0 mt-3"><a href="./detail.html">Lorem ipsum</a></h4>
-                <p class="card-text mb-0">
-                  NT$1,080 <span class="text-muted "><del>NT$1,200</del></span>
-                </p>
-                <p class="text-muted mt-3"></p>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div class="card border-0 mb-4 position-relative position-relative">
-              <img
-                src="https://images.unsplash.com/photo-1591843336741-9f1238f66758?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1867&q=80"
-                class="card-img-top rounded-0"
-                alt="..."
-              />
-              <a href="#" class="text-dark">
-                <i class="far fa-heart position-absolute" style="right: 16px; top: 16px"></i>
-              </a>
-              <div class="card-body p-0">
-                <h4 class="mb-0 mt-3"><a href="./detail.html">Lorem ipsum</a></h4>
+                <h4 class="mb-0 mt-3">
+                  <router-link :to="{ name: 'front.product' }">產品名稱 {{ n }}</router-link>
+                </h4>
                 <p class="card-text mb-0">
                   NT$1,080 <span class="text-muted "><del>NT$1,200</del></span>
                 </p>
@@ -258,27 +118,21 @@
             </div>
           </div>
         </div>
-        <nav class="d-flex justify-content-center">
-          <ul class="pagination">
-            <li class="page-item">
-              <a class="page-link" href="#" aria-label="Previous">
-                <span aria-hidden="true">&laquo;</span>
-              </a>
-            </li>
-            <li class="page-item active"><a class="page-link" href="#">1</a></li>
-            <li class="page-item"><a class="page-link" href="#">2</a></li>
-            <li class="page-item"><a class="page-link" href="#">3</a></li>
-            <li class="page-item">
-              <a class="page-link" href="#" aria-label="Next">
-                <span aria-hidden="true">&raquo;</span>
-              </a>
-            </li>
-          </ul>
-        </nav>
+        <Pagination></Pagination>
       </div>
     </div>
   </div>
 </template>
 <script>
-export default {};
+import FrontBanner from '@/components/FrontBanner.vue';
+import FrontBreadcrumb from '@/components/FrontBreadcrumb.vue';
+import Pagination from '@/components/Pagination.vue';
+
+export default {
+  components: {
+    FrontBanner,
+    FrontBreadcrumb,
+    Pagination,
+  },
+};
 </script>

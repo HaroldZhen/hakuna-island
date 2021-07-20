@@ -1,0 +1,30 @@
+<template>
+  <footer class="bg-primary text-white py-5">
+    <div class="container">
+      <div class="d-flex align-items-center justify-content-between text-white mb-md-7 mb-4">
+        <a class="text-white h4" href="./index.html">Hakuna Island</a>
+        <ul class="d-flex list-unstyled mb-0 h4">
+          <li>
+            <a href="#" class="text-white mx-3"><i class="fab fa-facebook"></i></a>
+          </li>
+          <li>
+            <a href="#" class="text-white mx-3"><i class="fab fa-instagram"></i></a>
+          </li>
+          <li>
+            <a href="#" class="text-white ms-3"><i class="fab fa-line"></i></a>
+          </li>
+        </ul>
+      </div>
+      <div
+        class="d-flex flex-column flex-md-row justify-content-between align-items-md-end align-items-start text-white"
+      >
+        <div class="mb-md-0 mb-1">
+          <p class="mb-0">〒904-0404<br />沖縄県国頭郡恩納村瀬良垣1860-4</p>
+          <p class="mb-0">TEL：098-982-3811FAX：098-982-3898<br /></p>
+          <p class="mb-0">MAIL:loisir-seragaki@solarehotels.com<br /></p>
+        </div>
+        <p class="mb-0">Copyright© 2021 Hakuna Island. All Rights Reserved.</p>
+      </div>
+    </div>
+  </footer>
+</template>

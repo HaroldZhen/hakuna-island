@@ -1,0 +1,116 @@
+@mixin navbarDark {
+  .navbar-brand {
+    color: $navbar-dark-brand-color;
+
+    &:hover,
+    &:focus {
+      color: $navbar-dark-brand-hover-color;
+    }
+  }
+
+  .navbar-nav {
+    .nav-link {
+      color: $navbar-dark-color;
+
+      &:hover,
+      &:focus {
+        color: $navbar-dark-hover-color;
+      }
+
+      &.disabled {
+        color: $navbar-dark-disabled-color;
+      }
+    }
+
+    .show > .nav-link,
+    .nav-link.active {
+      color: $navbar-dark-active-color;
+    }
+  }
+
+  .navbar-toggler {
+    color: $navbar-dark-color;
+  }
+
+  .navbar-text {
+    color: $navbar-dark-color;
+    a,
+    a:hover,
+    a:focus {
+      color: $navbar-dark-active-color;
+    }
+  }
+  .nav__icon {
+    line-height: 0;
+  }
+}
+@mixin navbarLight {
+  .navbar-brand {
+    color: $navbar-light-brand-color;
+
+    &:hover,
+    &:focus {
+      color: $navbar-light-brand-hover-color;
+    }
+  }
+
+  .navbar-nav {
+    .nav-link {
+      color: $navbar-light-color;
+
+      &:hover,
+      &:focus {
+        color: $navbar-light-hover-color;
+      }
+
+      &.disabled {
+        color: $navbar-light-disabled-color;
+      }
+    }
+
+    .show > .nav-link,
+    .nav-link.active {
+      color: $navbar-light-active-color;
+    }
+  }
+
+  .navbar-toggler {
+    background-color: $primary;
+    color: $white;
+  }
+  .navbar-text {
+    color: $navbar-light-color;
+
+    a,
+    a:hover,
+    a:focus {
+      color: $navbar-light-active-color;
+    }
+  }
+}
+
+.navbar__custom {
+  transition: 0.5s background-color;
+  @include navbarDark();
+}
+
+@include media-breakpoint-down(md) {
+  .navbar__custom {
+    background-color: $white;
+    padding-top: 0;
+    padding-bottom: 0;
+    @include navbarLight();
+    & > .container-fluid {
+      padding-right: 0px;
+    }
+  }
+}
+.navbar__light {
+  transition: 0.4s background-color;
+  background-color: rgba($white, 0.8);
+  box-shadow: $box-shadow-sm;
+  @include media-breakpoint-down(md) {
+    background-color: $white;
+  }
+  @include navbarLight();
+}

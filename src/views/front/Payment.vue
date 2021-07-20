@@ -1,45 +1,6 @@
 <template>
-  <div class="position-relative d-flex align-items-center justify-content-center mt-9" style="min-height: 400px;">
-    <div
-      class="position-absolute"
-      style="top:0; bottom: 0; left: 0; right: 0; background-image: url(https://images.unsplash.com/photo-1573906445622-3e98d4445256?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1950&q=80); background-position: center center; opacity: 0.5;"
-    ></div>
-    <h2 class="fw-bold">Payment</h2>
-  </div>
-  <section class="process py-6">
-    <div class="container">
-      <div class="col-12 col-md-8 mx-auto position-relative">
-        <ul class="d-flex justify-content-between align-items-center">
-          <li class="process__step active">
-            <span><span class="text h4">1</span></span>
-            <p class="mb-0">購物車</p>
-          </li>
-          <li class="process__step active">
-            <span><span class="text h4">2</span></span>
-            <p class="mb-0">填寫資料</p>
-          </li>
-          <li class="process__step active">
-            <span><span class="text h4">3</span></span>
-            <p class="mb-0">確認付款</p>
-          </li>
-          <li class="process__step">
-            <span><span class="text h4">4</span></span>
-            <p class="mb-0">完成訂單</p>
-          </li>
-        </ul>
-        <div class="progress process__wrap">
-          <div
-            class="progress-bar"
-            role="progressbar"
-            style="width: 65%;"
-            aria-valuenow="25"
-            aria-valuemin="0"
-            aria-valuemax="100"
-          ></div>
-        </div>
-      </div>
-    </div>
-  </section>
+  <FrontBanner></FrontBanner>
+  <FrontProgressStep stepName="payment" ></FrontProgressStep>
   <div class="container mb-3">
     <div class="row">
       <div class="col-12 col-md-6">
@@ -97,7 +58,7 @@
             </div>
             <div class="p-3">
               <div class="row">
-                <div class="col-12 col-md-12 mb-3 mb-md-0">
+                <div class="col-12 col-md-12 mb-3">
                   <label for="inputAddress" class="form-label">信用卡卡號:</label>
                   <input type="text" class="form-control" id="inputAddress" placeholder="請輸入16碼">
                 </div>
@@ -105,11 +66,11 @@
                   <label for="inputEmail4" class="form-label">有效期限: </label>
                   <input type="email" class="form-control" id="inputEmail4">
                 </div>
-                <div class="col-6 mb-3">
+                <div class="col-6 ms-auto mb-3">
                   <label for="inputPassword4" class="form-label">背後三碼:</label>
                   <input type="password" class="form-control" id="inputPassword4">
                 </div>
-                <div class="col-12 col-md-5">
+                <div class="col-12 ms-auto col-md-6">
                   <button class="btn btn-primary text-white w-100">確認付款</button>
                 </div>
               </div>
@@ -123,7 +84,7 @@
     <div class="container">
       <section class="cart border border-1">
         <div class="cart__list">
-          <div class="d-flex p-3 d-none d-md-flex ">
+          <div class="d-flex p-3 d-none d-md-flex border-bottom border-1">
             <div class="col-md-4">商品資料</div>
             <div class="col-md-2">單件價格</div>
             <div class="col-md-3">數量</div>
@@ -216,5 +177,13 @@
   </section>
 </template>
 <script>
-export default {};
+import FrontBanner from '@/components/FrontBanner.vue';
+import FrontProgressStep from '@/components/FrontProgressStep.vue';
+
+export default {
+  components: {
+    FrontBanner,
+    FrontProgressStep,
+  },
+};
 </script>
