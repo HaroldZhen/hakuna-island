@@ -3,11 +3,11 @@
   <FrontProgressStep stepName="checkout" ></FrontProgressStep>
   <section class="cart__wrap mb-3">
     <div class="container">
-      <div class="accordion bg-white" id="accordionPanelsStayOpenExample">
+      <div class="accordion" id="accordionPanelsStayOpenExample">
         <div class="accordion-item">
           <h2 class="accordion-header" id="panelsStayOpen-headingOne">
             <button
-              class="accordion-button collapsed bg-white"
+              class="accordion-button collapsed"
               type="button"
               data-bs-toggle="collapse"
               data-bs-target="#panelsStayOpen-collapseOne"

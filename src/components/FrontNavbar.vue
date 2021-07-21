@@ -89,7 +89,12 @@
     </div>
   </div>
   <div class="scroll-top" :class="scrollTop">
-    <a href="#" class="text-white d-flex flex-column justify-content-center align-items-center position-relative">
+    <a
+      href="#"
+      @click.prevent="toTop"
+      class="d-flex flex-column justify-content-center
+      align-items-center position-relative"
+    >
       <span class="material-icons scroll-top__icon"> keyboard_arrow_up </span>
       <span class="scroll-top__text fw-bolder">Top</span>
     </a>
@@ -120,6 +125,11 @@ export default {
       return {
         active: this.isScrollTopActive,
       };
+    },
+  },
+  methods: {
+    toTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     },
   },
   mounted() {

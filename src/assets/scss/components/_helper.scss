@@ -1,27 +1,37 @@
 .scroll-top {
+  $_main-color: rgba($puerto-rico, 0.8);
   display: none;
-  background-color: rgba($puerto-rico, 0.8);
+  background-color: $_main-color;
   border-radius: 50%;
-  color: $white;
+  border: 2px solid transparent;
   position: fixed;
   bottom: 25px;
   right: 20px;
-  width: 32px;
-  height: 32px;
+  width: 34px;
+  height: 34px;
   z-index: $zindex-fixed;
   box-shadow: $box-shadow-sm;
-  transition: display .8s;
+  transition: display .8s ease-in-out, background-color .10s ease-out;
+  & > a {
+    color: $white;
+  }
   &.active{
     display: block;
   }
+  &:hover{
+    border-color: $puerto-rico;
+    background-color: $white;
+    & > a {
+      color: $puerto-rico;
+    }
+  }
   .scroll-top__icon{
     position: absolute;
-    top: -5px;
-    font-size: 1.75rem;
+    top: -6px;
+    font-size: 1.7rem;
   }
   .scroll-top__text {
     font-size: 0.8rem;
-    padding-top: 10px;
+    padding-top: 9px;
   }
-
 }

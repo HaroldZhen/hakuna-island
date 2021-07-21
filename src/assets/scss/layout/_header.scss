@@ -1,10 +1,5 @@
 .hero {
   position: relative;
-  @include media-breakpoint-down(md) {
-    & {
-      margin-top: 40px;
-    }
-  }
   &__bg {
     position: absolute;
     top: 0;
@@ -14,12 +9,8 @@
     background-image: url(https://images.unsplash.com/photo-1573906445622-3e98d4445256?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1950&q=80);
     background-position: center center;
     background-size: cover;
+    background-attachment: fixed;
     z-index: -10;
-    @include media-breakpoint-down(md) {
-      & {
-        bottom: 40px;
-      }
-    }
     &::after {
       content: "";
       width: 100%;
@@ -31,11 +22,6 @@
       right: 0;
       background: rgba(0, 0, 0, 0.2);
       z-index: -2;
-      @include media-breakpoint-down(md) {
-        & {
-          height: calc(100% - 40px);
-        }
-      }
     }
     &::before {
       content: "";
@@ -51,6 +37,25 @@
     }
   }
   &__content {
-    min-height: calc(100vh - 40px);
+    min-height: calc(100vh - 20px);
+  }
+  &__title {
+    font-size: 5.5rem;
+  }
+  &__subtitle{
+    font-size: 1.2rem;
+    font-weight: 300;
+  }
+}
+
+@include media-breakpoint-down(md) {
+  .hero {
+    margin-top: 40px;
+    &__bg {
+      bottom: 40px;
+      &::after {
+        height: calc(100% - 20px);
+      }
+    }
   }
 }

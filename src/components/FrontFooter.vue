@@ -1,5 +1,5 @@
 <template>
-  <footer class="bg-primary text-white py-5">
+  <footer class="bg-primary text-white py-6">
     <div class="container">
       <div class="d-flex align-items-center justify-content-between text-white mb-md-7 mb-4">
         <a class="text-white h4" href="./index.html">Hakuna Island</a>
