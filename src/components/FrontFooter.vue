@@ -19,7 +19,7 @@
         class="d-flex flex-column flex-md-row justify-content-between align-items-md-end align-items-start text-white"
       >
         <div class="mb-md-0 mb-1">
-          <p class="mb-0">777-6666<br />台灣哈庫島馬躂市天堂路101號</p>
+          <p class="mb-0">777-6666<br />哈庫島馬躂市天堂路101號</p>
           <p class="mb-0">TEL：098-989-3333 FAX：098-989-2222<br /></p>
           <p class="mb-0">MAIL:service@hakuna-island.org<br /></p>
         </div>

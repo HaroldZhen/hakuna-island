@@ -49,3 +49,10 @@
     }
   }
 }
+
+.coupon__input::placeholder,
+.credit__input::placeholder {
+  font-size: $font-size-sm;
+  color: $gray-600;
+  font-weight: 300;
+}

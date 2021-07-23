@@ -1,5 +1,12 @@
 <template>
-  <loading :active="isLoading"></loading>
+  <loading
+    :active="isLoading"
+    :background-color="loadingConfig.bgColor"
+    :color="loadingConfig.color"
+    :opacity="loadingConfig.opacity"
+    :loader="loadingConfig.loader"
+    :z-index="loadingConfig.zIndex"
+  ></loading>
   <ToastMessage />
   <router-view />
 </template>
@@ -13,6 +20,13 @@ export default {
   data() {
     return {
       isLoading: false,
+      loadingConfig: {
+        bgColor: '#000',
+        color: '#fff',
+        opacity: 0.5,
+        loader: 'dots',
+        zIndex: 1200,
+      },
     };
   },
   beforeCreate() {

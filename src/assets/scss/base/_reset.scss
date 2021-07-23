@@ -2,3 +2,26 @@ body {
   font-family: "Noto Sans TC", "Segoe UI", "Microsoft JhengHei",
     "Helvetica Neue", Arial, sans-serif;
 }
+
+// 改造主要按鈕文字顏色: 白色
+.btn-primary{
+  color: $white;
+  &:hover {
+    color: $white;
+  }
+  .btn-check:focus + &,
+  &:focus {
+    color: $white;
+  }
+  .btn-check:checked + &,
+  .btn-check:active + &,
+  &:active,
+  &.active,
+  .show > &.dropdown-toggle {
+    color: $white;
+  }
+  &:disabled,
+  &.disabled {
+    color: $white;
+  }
+}

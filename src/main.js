@@ -24,6 +24,10 @@ import 'material-icons/iconfont/material-icons.css';
 configure({
   generateMessage: localize({ zh_TW: zhTW }), // 載入繁體中文語系
   validateOnInput: true, // 當輸入任何內容直接進行驗證
+  classes: {
+    valid: 'is-valid',
+    invalid: 'is-invalid',
+  },
 });
 setLocale('zh_TW');
 

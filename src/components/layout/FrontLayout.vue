@@ -31,9 +31,9 @@ export default {
   },
   methods: {
     getCart() {
-      this.$bus.$emit('isLoading');
+      // this.$bus.$emit('isLoading');
       this.$hexAxios.get(this.$frontAPI.cart.list()).then((res) => {
-        this.$bus.$emit('isLoading', { status: false });
+        // this.$bus.$emit('isLoading', { status: false });
         const { success, data } = res.data;
         if (success) {
           this.shopping.cart = data;
@@ -41,9 +41,11 @@ export default {
       });
     },
     delCart(pid) {
+      this.$bus.$emit('isLoading');
       this.$hexAxios
         .delete(this.$frontAPI.cart.delete(pid))
         .then((res) => {
+          this.$bus.$emit('isLoading', { status: false });
           const { success, message } = res.data;
           if (success) {
             this.$swal({
