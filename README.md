@@ -1,29 +1,35 @@
-# hakuna-island
+#  哈庫島 (hakuna-island)
+...
 
-## Project setup
-```
-yarn install
-```
+## 展示網址
+https://haroldzhen.github.io/hakuna-island/#/
 
-### Compiles and hot-reloads for development
-```
-yarn serve
-```
+## 簡介
+前端練習作品
 
-### Compiles and minifies for production
-```
-yarn build
-```
+### 主要練習
++ Vue Component
++ VueCli
++ VueRouter
++ Webpack
++ API操作
++ RWD
++ SCSS
 
-### Run your unit tests
-```
-yarn test:unit
-```
+## 內容介紹
+...
 
-### Lints and fixes files
-```
-yarn lint
-```
+## 使用外掛
+...
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+## 過濾功能
+...
+
+## 耗費工時
+目前已花費約3個工作天。
+
+## 感謝
+...
+## 內容來源
+...
+
