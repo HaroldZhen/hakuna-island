@@ -9,7 +9,11 @@ import {
 import AllRules from '@vee-validate/rules';
 import { localize, setLocale } from '@vee-validate/i18n';
 import zhTW from '@vee-validate/i18n/dist/locale/zh_TW.json';
+import Loading from 'vue3-loading-overlay';
+import 'vue3-loading-overlay/dist/vue3-loading-overlay.css';
+
 import App from './App.vue';
+import { hexAxios, frontAPI } from './response/hexAxios';
 import bus from './methods/bus';
 import router from './router';
 import { date, currency, dateToTimestamp } from './methods/filters';
@@ -35,10 +39,13 @@ app.config.globalProperties.$filters = {
   dateToTimestamp,
 };
 
+app.config.globalProperties.$hexAxios = hexAxios;
+app.config.globalProperties.$frontAPI = frontAPI;
 app.config.globalProperties.$bus = bus;
 app.use(router);
 app.use(VueSweetalert2);
 app.use(VueAxios, axios);
+app.component('Loading', Loading);
 app.component('VForm', VForm);
 app.component('VField', VField);
 app.component('ErrorMessage', ErrorMessage);
