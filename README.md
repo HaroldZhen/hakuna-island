@@ -1,5 +1,5 @@
-#  哈庫島 (hakuna-island)
-...
+#  哈庫島 (Hakuna-island)
+哈庫島座落於太平洋哥吉拉棲息地的太平洋海底斷層上，擁有絕佳的生態環境，豐富的水下世界，讓您近距離就能觀賞，並且我們提供一條龍的全包服務，讓所有貴賓們吃喝玩樂不用愁！24H專人客房服務、頂級奢華SPA療程、落日浪漫海釣、免費的水上活動以及短途出海遊等，讓您體驗無與倫比的豐富全包式假期，擁有3間不同風格的餐廳，提供豐富的美食、啜飲優質酒品、沉迷無限量的特調雞尾酒，讓每位前來的貴賓能夠體驗原始與現代結合的哈庫島難忘之旅。
 
 ## 展示網址
 https://haroldzhen.github.io/hakuna-island/#/
@@ -8,6 +8,7 @@ https://haroldzhen.github.io/hakuna-island/#/
 前端練習作品
 
 ### 主要練習
++ Vue 3
 + Vue Component
 + VueCli
 + VueRouter
@@ -15,14 +16,12 @@ https://haroldzhen.github.io/hakuna-island/#/
 + API操作
 + RWD
 + SCSS
++ Bootstrap5
 
 ## 內容介紹
 ...
 
 ## 使用外掛
-...
-
-## 過濾功能
 ...
 
 ## 耗費工時
@@ -32,4 +31,3 @@ https://haroldzhen.github.io/hakuna-island/#/
 ...
 ## 內容來源
 ...
-
