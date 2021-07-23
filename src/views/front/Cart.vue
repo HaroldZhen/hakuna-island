@@ -1,11 +1,25 @@
 <template>
   <FrontBanner></FrontBanner>
-  <FrontProgressStep stepName="cart" ></FrontProgressStep>
-  <section class="cart mb-3">
+  <FrontProgressStep stepName="cart"></FrontProgressStep>
+  <section v-if="isCartEmpty">
+    <div class="container mb-3">
+      <div class="border border-1">
+        <div class="border-bottom border-1 py-3">
+          <router-link class="d-flex justify-content-start align-items-center" :to="{ name: 'front.index' }"
+            ><span class="material-icons"> chevron_left </span>來去逛逛</router-link
+          >
+        </div>
+        <h2 class="text-center text-secondary py-6 mb-2">您尚未選擇任何服務喔，快去選購吧！</h2>
+      </div>
+    </div>
+  </section>
+  <section v-else class="cart mb-3">
     <div class="container">
       <div class="border border-1">
         <div class="cart__header bg-light border-bottom border-1">
-          <h3 class="mb-0 p-2 h5">購物車<span>(3件)</span></h3>
+          <h3 class="mb-0 p-2 h5">
+            購物車<span>({{ shoppingCart.cart.carts.length || 0 }})</span>
+          </h3>
         </div>
         <div class="cart__list">
           <div class="d-flex p-3 d-none d-md-flex ">
@@ -15,92 +29,36 @@
             <div class="col-md-2">小計</div>
             <div class="col-md-1">-</div>
           </div>
-          <div class="cart__item d-flex p-3 border-top border-1">
+          <div class="cart__item d-flex p-3 border-top border-1" v-for="item in shoppingCart.cart.carts" :key="item.id">
             <div class="cart__product col-8 col-md-4">
               <div class="d-flex">
                 <div class="col-auto">
-                  <img class="cart__img img-thumbnail" src="https://fakeimg.pl/300x300/" />
+                  <img class="cart__img img-thumbnail" :src="item.product.imageUrl" />
                 </div>
-                <div class="col px-3">花磚小鏡子---花見幸運花磚小鏡子---花見幸運</div>
+                <div class="col px-3">{{ item.product.title }}</div>
               </div>
             </div>
             <div class="cart__price col-4 col-md-2">
-              <p class="mb-0">NT$260</p>
-              <p class="text-decoration-line-through text-muted">NT$300</p>
+              <p class="mb-0">{{ $filters.currency(item.product.price) }}</p>
+              <p class="text-decoration-line-through text-muted">
+                {{ $filters.currency(item.product.origin_price) }}
+              </p>
             </div>
             <div class="cart__qty col-4 col-md-3">
               <div class="input-group cart__inputs">
-                <button class="btn btn-outline-primary" type="button">-</button>
-                <input type="text" class="form-control text-center" placeholder="1" />
-                <button class="btn btn-outline-primary" type="button">+</button>
+                <button class="btn btn-outline-primary" @click="item.qty--" type="button">-</button>
+                <input type="text" class="form-control text-center" v-model="item.qty" placeholder="1" />
+                <button class="btn btn-outline-primary" @click="item.qty++" type="button">+</button>
               </div>
             </div>
             <div class="cart__subtotal col-4 col-md-2">
-              <span>NT$260</span>
+              <span>{{ $filters.currency(item.product.price * item.qty) }}</span>
             </div>
-            <div class="cart__clear col-4 col-md-1">
+            <a role="button" href="#" class="cart__clear col-4 col-md-1" @click.prevent="delCart(item.id)">
               <span class="material-icons">
                 clear
-              </span>
-            </div>
-          </div>
-          <div class="cart__item d-flex p-3 border-top border-1">
-            <div class="cart__product col-8 col-md-4">
-              <div class="d-flex">
-                <div class="col-auto">
-                  <img class="cart__img img-thumbnail" src="https://fakeimg.pl/300x300/" />
-                </div>
-                <div class="col px-3">花磚小鏡子---花見幸運花磚小鏡子---花見幸運</div>
-              </div>
-            </div>
-            <div class="cart__price col-4 col-md-2">
-              <p class="mb-0">NT$260</p>
-              <p class="text-decoration-line-through text-muted">NT$300</p>
-            </div>
-            <div class="cart__qty col-4 col-md-3">
-              <div class="input-group cart__inputs">
-                <button class="btn btn-outline-primary" type="button">-</button>
-                <input type="text" class="form-control text-center" placeholder="1" />
-                <button class="btn btn-outline-primary" type="button">+</button>
-              </div>
-            </div>
-            <div class="cart__subtotal col-4 col-md-2">
-              <span>NT$260</span>
-            </div>
-            <div class="cart__clear col-4 col-md-1">
-              <span class="material-icons">
-                clear
-              </span>
-            </div>
-          </div>
-          <div class="cart__item d-flex p-3 border-top border-1">
-            <div class="cart__product col-8 col-md-4">
-              <div class="d-flex">
-                <div class="col-auto">
-                  <img class="cart__img img-thumbnail" src="https://fakeimg.pl/300x300/" />
-                </div>
-                <div class="col px-3">花磚小鏡子---花見幸運花磚小鏡子---花見幸運</div>
-              </div>
-            </div>
-            <div class="cart__price col-4 col-md-2">
-              <p class="mb-0">NT$260</p>
-              <p class="text-decoration-line-through text-muted">NT$300</p>
-            </div>
-            <div class="cart__qty col-4 col-md-3">
-              <div class="input-group cart__inputs">
-                <button class="btn btn-outline-primary" type="button">-</button>
-                <input type="text" class="form-control text-center" placeholder="1" />
-                <button class="btn btn-outline-primary" type="button">+</button>
-              </div>
-            </div>
-            <div class="cart__subtotal col-4 col-md-2">
-              <span>NT$260</span>
-            </div>
-            <div class="cart__clear col-4 col-md-1">
-              <span class="material-icons">
-                clear
-              </span>
-            </div>
+              </span></a
+            >
           </div>
         </div>
       </div>
@@ -116,24 +74,22 @@
           <div class="p-3">
             <form class="row g-3">
               <div class="col-12">
-                <label for="inputAddress" class="form-label">送貨地點</label>
-                <select id="inputState" class="form-select">
-                  <option selected>Choose...</option>
-                  <option>...</option>
+                <label for="country" class="form-label">送貨地點</label>
+                <select id="country" v-model="users.country" class="form-select">
+                  <option value="tw" selected>台灣</option>
                 </select>
               </div>
               <div class="col-12">
-                <label for="inputAddress2" class="form-label">送貨方式</label>
-                <select id="inputState" class="form-select">
-                  <option selected>Choose...</option>
-                  <option>...</option>
+                <label for="delivery" class="form-label">送貨方式</label>
+                <select id="delivery" v-model="users.deliveryMethod" class="form-select">
+                  <option value="home" selected>宅配</option>
                 </select>
               </div>
               <div class="col-12">
-                <label for="inputAddress2" class="form-label">付款方式</label>
-                <select id="inputState" class="form-select">
-                  <option selected>Choose...</option>
-                  <option>...</option>
+                <label for="paymentMethod" class="form-label">付款方式</label>
+                <select id="paymentMethod" v-model="users.paymentMethod" class="form-select">
+                  <option value="credit" selected>信用卡</option>
+                  <option value="atm" selected>ATM</option>
                 </select>
               </div>
             </form>
@@ -149,25 +105,47 @@
             <div class="d-flex flex-column justify-content-around">
               <div class="d-flex py-2">
                 <span>小計</span>
-                <span class="ms-auto">NT$4,140</span>
+                <span class="ms-auto">{{ $filters.currency(shoppingCart.cart.total) }}</span>
               </div>
               <div class="d-flex py-2">
                 <span>運費:</span>
-                <span class="ms-auto">NT$80</span>
+                <span class="ms-auto">$80</span>
               </div>
-              <div class="py-3">
-                <a href="#">優惠代碼</a>
+              <div v-if="coupon">
+                <div class="py-3 d-flex mb-2">
+                  <span>優惠代碼:</span>
+                  <span class="ms-auto">{{ coupon.code }} | {{ coupon.title }}</span>
+                </div>
               </div>
-              <div class="d-flex mb-2 text-danger">
-                <span >折扣:</span>
-                <span class="ms-auto">NT$0</span>
+              <div v-else-if="showCouponBtn">
+                <div class="py-3 d-flex mb-2">
+                  <span>優惠代碼:</span>
+                  <span class="ms-auto">
+                    <div class="input-group">
+                      <input type="text" class="form-control" placeholder="" aria-label="coupon code" />
+                      <button class="btn btn-outline-primary" type="button" id="coupon-btn">使用</button>
+                    </div>
+                  </span>
+                </div>
+              </div>
+              <div v-else class="py-3 d-flex mb-2">
+                <span v-if="isCartEmpty">優惠代碼</span>
+                <a href="#" v-else role="button"  @click.prevent="showCouponBtn = true">優惠代碼</a>
+              </div>
+              <div v-if="shoppingCart.cart.total - shoppingCart.cart.final_total > 0" class="d-flex mb-2">
+                <span>折扣:</span>
+                <span class="ms-auto text-warning">{{
+                  $filters.currency(shoppingCart.cart.total - shoppingCart.cart.final_total)
+                }}</span>
               </div>
               <div class="d-flex border-top border-1 py-2">
                 <span>合計:</span>
-                <span class="ms-auto">NT$4,220</span>
+                <span class="ms-auto">{{ $filters.currency(shoppingCart.cart.final_total) }}</span>
               </div>
             </div>
-            <button class="btn btn-primary text-white w-100">前往結帳</button>
+            <button class="btn btn-primary text-white w-100" :disabled="isCartEmpty" @click="addOrderInfo">
+              前往結帳
+            </button>
           </div>
         </section>
       </div>
@@ -181,10 +159,39 @@ import FrontProgressStep from '@/components/FrontProgressStep.vue';
 import FrontProductAdLike from '@/components/FrontProductAdLike.vue';
 
 export default {
+  inject: ['shoppingCart'],
   components: {
     FrontBanner,
     FrontProgressStep,
     FrontProductAdLike,
+  },
+  data() {
+    return {
+      showCouponBtn: false,
+      users: {
+        country: 'tw',
+        deliveryMethod: 'home',
+        paymentMethod: 'credit',
+      },
+    };
+  },
+  methods: {
+    delCart(pid) {
+      this.$bus.$emit('cartRemoveItem', pid);
+    },
+    addOrderInfo() {
+      this.shoppingCart.order.user = { ...this.users };
+    },
+  },
+  computed: {
+    isCartEmpty() {
+      return this.shoppingCart.cart.total <= 0;
+    },
+    coupon() {
+      const { carts } = this.shoppingCart.cart;
+      const { coupon } = carts.find((item) => Object.prototype.hasOwnProperty.call(item, 'coupon')) || {};
+      return coupon;
+    },
   },
 };
 </script>

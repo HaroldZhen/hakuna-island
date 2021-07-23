@@ -1,6 +1,6 @@
 <template>
   <FrontBanner></FrontBanner>
-  <FrontProgressStep stepName="checkout" ></FrontProgressStep>
+  <FrontProgressStep stepName="checkout"></FrontProgressStep>
   <section class="cart__wrap mb-3">
     <div class="container">
       <div class="accordion" id="accordionPanelsStayOpenExample">
@@ -15,7 +15,7 @@
               aria-controls="panelsStayOpen-collapseOne"
             >
               <div class="ms-auto">
-                <p class="text-center h4">合計: NT$4,220</p>
+                <p class="text-center h4">合計: {{ $filters.currency(cart.final_total) }}</p>
                 <p class="text-center h4">購物車 (3件)</p>
               </div>
             </button>
@@ -34,67 +34,27 @@
                     <div class="col-md-3">數量</div>
                     <div class="col-md-3 text-end">小計</div>
                   </div>
-                  <div class="cart__item d-flex p-3 border-top border-1">
+                  <div class="cart__item d-flex p-3 border-top border-1" v-for="item in cart.carts" :key="item.id">
                     <div class="cart__product col-8 col-md-4">
                       <div class="d-flex">
                         <div class="col-auto">
-                          <img class="cart__img img-thumbnail" src="https://fakeimg.pl/300x300/" />
+                          <img class="cart__img img-thumbnail" :src="item.product.imageUrl" />
                         </div>
-                        <div class="col px-3">花磚小鏡子---花見幸運花磚小鏡子---花見幸運</div>
+                        <div class="col px-3">{{ item.product.title }}</div>
                       </div>
                     </div>
                     <div class="cart__price col-4 col-md-2">
-                      <p class="mb-0">NT$260</p>
-                      <p class="text-decoration-line-through text-muted">NT$300</p>
+                      <p class="mb-0">{{ $filters.currency(item.product.price) }}</p>
+                      <p class="text-decoration-line-through text-muted">
+                        {{ $filters.currency(item.product.origin_price) }}
+                      </p>
                     </div>
                     <div class="cart__qty col-4 col-md-3">
                       <span class="d-block d-md-none">數量：</span>
-                      <span>1</span>
+                      <span>{{ item.qty }}</span>
                     </div>
                     <div class="cart__subtotal col-4 col-md-3 text-end">
-                      <span>NT$260</span>
-                    </div>
-                  </div>
-                  <div class="cart__item d-flex p-3 border-top border-1">
-                    <div class="cart__product col-8 col-md-4">
-                      <div class="d-flex">
-                        <div class="col-auto">
-                          <img class="cart__img img-thumbnail" src="https://fakeimg.pl/300x300/" />
-                        </div>
-                        <div class="col px-3">花磚小鏡子---花見幸運花磚小鏡子---花見幸運</div>
-                      </div>
-                    </div>
-                    <div class="cart__price col-4 col-md-2">
-                      <p class="mb-0">NT$260</p>
-                      <p class="text-decoration-line-through text-muted">NT$300</p>
-                    </div>
-                    <div class="cart__qty col-4 col-md-3">
-                      <span class="d-block d-md-none">數量：</span>
-                      <span>1</span>
-                    </div>
-                    <div class="cart__subtotal col-4 col-md-3 text-end">
-                      <span>NT$260</span>
-                    </div>
-                  </div>
-                  <div class="cart__item d-flex p-3 border-top border-1">
-                    <div class="cart__product col-8 col-md-4">
-                      <div class="d-flex">
-                        <div class="col-auto">
-                          <img class="cart__img img-thumbnail" src="https://fakeimg.pl/300x300/" />
-                        </div>
-                        <div class="col px-3">花磚小鏡子---花見幸運花磚小鏡子---花見幸運</div>
-                      </div>
-                    </div>
-                    <div class="cart__price col-4 col-md-2">
-                      <p class="mb-0">NT$260</p>
-                      <p class="text-decoration-line-through text-muted">NT$300</p>
-                    </div>
-                    <div class="cart__qty col-4 col-md-3">
-                      <span class="d-block d-md-none">數量：</span>
-                      <span>1</span>
-                    </div>
-                    <div class="cart__subtotal col-4 col-md-3 text-end">
-                      <span>NT$260</span>
+                      <span>{{ $filters.currency(item.product.price * item.qty) }}</span>
                     </div>
                   </div>
                   <div class="cart__total d-flex p-2 border-top border-1">
@@ -102,15 +62,21 @@
                       <div class="d-flex flex-column justify-content-around">
                         <div class="d-flex py-1">
                           <span>小計</span>
-                          <span class="ms-auto">NT$4,140</span>
+                          <span class="ms-auto">{{ $filters.currency(cart.total) }}</span>
                         </div>
                         <div class="d-flex py-1">
                           <span>運費:</span>
-                          <span class="ms-auto">NT$80</span>
+                          <span class="ms-auto">$80</span>
+                        </div>
+                        <div class="d-flex py-1">
+                          <span>折扣:</span>
+                          <span class="ms-auto text-warning">{{
+                            $filters.currency(shoppingCart.cart.total - shoppingCart.cart.final_total)
+                          }}</span>
                         </div>
                         <div class="d-flex py-1 fw-bold">
-                          <span>合計(共3件):</span>
-                          <span class="ms-auto">NT$4,220</span>
+                          <span>合計(共0件):</span>
+                          <span class="ms-auto">{{ $filters.currency(cart.final_total) }}</span>
                         </div>
                       </div>
                     </div>
@@ -134,16 +100,16 @@
             <div class="p-3">
               <form class="row g-3">
                 <div class="col-12">
-                  <label for="inputAddress" class="form-label">聯絡人姓名</label>
-                  <input type="text" class="form-control" id="inputAddress2" />
+                  <label for="userName" class="form-label">聯絡人姓名</label>
+                  <input type="text" class="form-control" id="userName" />
                 </div>
                 <div class="col-12">
-                  <label for="inputAddress2" class="form-label">電話</label>
-                  <input type="text" class="form-control" id="inputAddress2" />
+                  <label for="userTel" class="form-label">電話</label>
+                  <input type="text" class="form-control" id="userTel" />
                 </div>
                 <div class="col-12">
-                  <label for="inputAddress2" class="form-label">電子信箱</label>
-                  <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" />
+                  <label for="userEmail" class="form-label">電子信箱</label>
+                  <input type="email" class="form-control" id="userEmail" placeholder="name@example.com" />
                 </div>
               </form>
             </div>
@@ -192,33 +158,33 @@
                 </div>
               </div>
               <div class="col-12">
-                <label for="inputAddress2" class="form-label">收件人名稱</label>
-                <input type="text" class="form-control" id="inputAddress2" placeholder="地址" />
+                <label for="receiverName" class="form-label">收件人名稱</label>
+                <input type="text" class="form-control" id="receiverName" placeholder="" />
                 <p class="text-muted">請填入收件人真實姓名，以確保順利收件</p>
               </div>
               <div class="col-12 mb-3">
-                <label for="inputAddress2" class="form-label">收件人電話</label>
-                <input type="text" class="form-control" id="inputAddress2" placeholder="地址" />
+                <label for="receiverTel" class="form-label">收件人電話</label>
+                <input type="text" class="form-control" id="receiverTel" placeholder="" />
               </div>
               <div class="col-12 mb-3 border-top border-1 pt-3">
                 <label for="inputAddress2" class="form-label">地址</label>
                 <p>送貨地點:台灣</p>
                 <div class="row mb-3">
                   <div class="col">
-                    <select id="inputState" class="form-select">
+                    <select id="city" class="form-select">
                       <option selected>城市/縣市</option>
                       <option>...</option>
                     </select>
                   </div>
                   <div class="col">
-                    <select id="inputState" class="form-select">
+                    <select id="area" class="form-select">
                       <option selected>地區</option>
                       <option>...</option>
                     </select>
                   </div>
                 </div>
                 <div class="col-12">
-                  <input type="text" class="form-control" id="inputAddress2" placeholder="地址" />
+                  <input type="text" class="form-control" id="address" placeholder="地址" />
                 </div>
               </div>
             </div>
@@ -275,9 +241,18 @@ import FrontBanner from '@/components/FrontBanner.vue';
 import FrontProgressStep from '@/components/FrontProgressStep.vue';
 
 export default {
+  inject: ['shoppingCart'],
+  data() {
+    return {};
+  },
   components: {
     FrontBanner,
     FrontProgressStep,
+  },
+  computed: {
+    cart() {
+      return this.shoppingCart.cart;
+    },
   },
 };
 </script>

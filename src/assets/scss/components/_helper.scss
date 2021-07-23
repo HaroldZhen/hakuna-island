@@ -11,21 +11,21 @@
   height: 34px;
   z-index: $zindex-fixed;
   box-shadow: $box-shadow-sm;
-  transition: display .8s ease-in-out, background-color .10s ease-out;
+  transition: display 0.8s ease-in-out, background-color 0.1s ease-out;
   & > a {
     color: $white;
   }
-  &.active{
+  &.active {
     display: block;
   }
-  &:hover{
+  &:hover {
     border-color: $puerto-rico;
     background-color: $white;
     & > a {
       color: $puerto-rico;
     }
   }
-  .scroll-top__icon{
+  .scroll-top__icon {
     position: absolute;
     top: -6px;
     font-size: 1.7rem;
@@ -33,5 +33,19 @@
   .scroll-top__text {
     font-size: 0.8rem;
     padding-top: 9px;
+  }
+}
+
+.toast__box {
+  position: fixed;
+  top: 72px;
+  right: 4px;
+  z-index: $zindex-fixed;
+
+  @include media-breakpoint-down(md) {
+    & {
+      top: 55px;
+      right: 5px;
+    }
   }
 }

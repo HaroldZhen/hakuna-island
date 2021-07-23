@@ -18,7 +18,7 @@
           ><span class=" material-icons">
             shopping_cart
           </span>
-          <span class="cart__num"> 1 </span></a
+          <span class="cart__num"> {{ cartCount }} </span></a
         >
       </div>
       <button
@@ -49,7 +49,7 @@
   <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
     <div class="offcanvas-header">
       <h5 id="offcanvasRightLabel" class="d-flex align-items-center text-secondary">
-        <span class=" material-icons"> shopping_cart </span><span>購物車(10)</span>
+        <span class=" material-icons"> shopping_cart </span><span>購物車({{ cartCount }})</span>
       </h5>
       <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
@@ -57,22 +57,19 @@
       <section class="shopping position-relative">
         <div class="shopping__list pe-2 mb-3">
           <div
-            v-for="n in 20"
-            :key="n"
+            v-for="item in shoppingCart.cart.carts"
+            :key="item.id"
             class="shopping__item d-flex justify-content-between border-bottom border-1 pb-2 mb-2"
           >
             <a class="shopping__image me-2">
-              <img
-                class="img-fluid"
-                src="https://images.unsplash.com/photo-1626705106454-e87b87e7c1b2?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=641&q=80"
-              />
+              <img class="img-fluid" :src="item.product.imageUrl" />
             </a>
             <div class="flex-grow-1 d-flex flex-column justify-content-around">
-              <a href="#" class="h5 m-0">產品名稱{{ n }}</a>
-              <p class="text-muted m-0">1 x NT$1000</p>
+              <a href="#" :data-id="item.id" class="h5 m-0">{{ item.product.title }}</a>
+              <p class="text-muted m-0">{{ item.qty }} x NT${{ item.product.price }}</p>
             </div>
             <div class="d-flex align-items-center">
-              <button class="btn btn-outline-danger btn-sm">
+              <button class="btn btn-outline-danger btn-sm" @click="delCart(item.id)">
                 <span class="material-icons">
                   delete
                 </span>
@@ -82,16 +79,22 @@
         </div>
         <div class="row h5 text-secondary">
           <div class="ms-auto col-4">小計：</div>
-          <div class="col-4">NT$1000</div>
+          <div class="col-4">NT${{ shoppingCart.cart.total }}</div>
         </div>
-        <button class="w-100 btn btn-primary py-2 text-white">來去結帳</button>
+        <router-link
+          class="w-100 btn btn-primary py-2 text-white"
+          data-bs-dismiss="offcanvas"
+          aria-label="Close"
+          :to="{ name: 'front.cart' }"
+          >來去結帳</router-link
+        >
       </section>
     </div>
   </div>
-  <div class="scroll-top" :class="scrollTop">
+  <div class="scroll-top" :class="scrollStyle">
     <a
       href="#"
-      @click.prevent="toTop"
+      @click.prevent="scrollToTop"
       class="d-flex flex-column justify-content-center
       align-items-center position-relative"
     >
@@ -102,6 +105,7 @@
 </template>
 <script>
 export default {
+  inject: ['shoppingCart'],
   props: {
     isBgLight: {
       default: true,
@@ -121,15 +125,21 @@ export default {
         'bg-white': this.isBgWhite,
       };
     },
-    scrollTop() {
+    scrollStyle() {
       return {
         active: this.isScrollTopActive,
       };
     },
+    cartCount() {
+      return this.shoppingCart.cart.carts.length;
+    },
   },
   methods: {
-    toTop() {
+    scrollToTop() {
       window.scrollTo({ top: 0, behavior: 'smooth' });
+    },
+    delCart(pid) {
+      this.$bus.$emit('cartRemoveItem', pid);
     },
   },
   mounted() {

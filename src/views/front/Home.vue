@@ -79,10 +79,10 @@
         </div>
       </div>
     </section>
-    <div class="mt-7">
-      <div id="carouselExampleControls" class="carousel slide carousel-fade" data-ride="carousel">
+    <section class="booking-reason mt-7">
+      <div id="carouselExampleControls" class="carousel carousel-dark slide" data-ride="carousel">
         <div class="carousel-inner">
-          <div class="carousel-item active bg-light ">
+          <div class="carousel-item active bg-light booking-reason__item">
             <div class="row justify-content-center py-7">
               <div class="col-md-6 text-center">
                 <h3>選擇瓦露島度假村的理由一</h3>
@@ -94,7 +94,7 @@
               </div>
             </div>
           </div>
-          <div class="carousel-item bg-primary text-white">
+          <div class="carousel-item bg-primary text-white booking-reason__item">
             <div class="row justify-content-center py-7">
               <div class="col-md-6 text-center">
                 <h3>選擇瓦露島度假村的理由二</h3>
@@ -106,16 +106,31 @@
               </div>
             </div>
           </div>
+          <div class="carousel-item bg-light booking-reason__item">
+            <div class="row justify-content-center py-7">
+              <div class="col-md-6 text-center">
+                <h3>選擇瓦露島度假村的理由三</h3>
+                <p class="my-5">
+                  酒店擁有八種各式不同類型的沙灘別墅與水上別墅，以馬爾地夫當地渡假風格融合簡約型態設計，除此之外，島上延伸出的木製棧道，還連結水上海鮮餐廳＆酒吧與豪華頂級水上SPA。
+                  沙灘別墅極簡主義的設計風格，坐落在鬱鬱蔥蔥的熱帶花園中，隨時可踏上柔軟的白色長沙灘，眼前即是一望無際的綠松石瀉湖美景。
+                  水上別墅的異國情調，可直接在房內就可欣賞日落美景，此外，Villa還擁有一間極具特色的水上私人15平方米大的泳池套房，設有一間寬敞的臥室和相連的客廳，一間豪華浴室以及可直接通往潟湖的甲板。
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item bg-primary text-white booking-reason__item">
+            <div class="row justify-content-center py-7">
+              <div class="col-md-6 text-center">
+                <h3>選擇瓦露島度假村的理由四</h3>
+                <p class="my-5">
+                  酒店擁有八種各式不同類型的沙灘別墅與水上別墅，以馬爾地夫當地渡假風格融合簡約型態設計，除此之外，島上延伸出的木製棧道，還連結水上海鮮餐廳＆酒吧與豪華頂級水上SPA。
+                  沙灘別墅極簡主義的設計風格，坐落在鬱鬱蔥蔥的熱帶花園中，隨時可踏上柔軟的白色長沙灘，眼前即是一望無際的綠松石瀉湖美景。
+                  水上別墅的異國情調，可直接在房內就可欣賞日落美景，此外，Villa還擁有一間極具特色的水上私人15平方米大的泳池套房，設有一間寬敞的臥室和相連的客廳，一間豪華浴室以及可直接通往潟湖的甲板。
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
-        <button
-          class="carousel-control-prev"
-          type="button"
-          data-bs-target="#carouselExampleControls"
-          data-bs-slide="prev"
-        >
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Previous</span>
-        </button>
         <button
           class="carousel-control-next"
           type="button"
@@ -126,7 +141,7 @@
           <span class="visually-hidden">Next</span>
         </button>
       </div>
-    </div>
+    </section>
     <div class="container my-7">
       <div class="row">
         <div class="col-md-6">
@@ -153,10 +168,23 @@
           </p>
         </div>
       </div>
+      <div class="row">
+        <div class="col-md-6">
+          <img width="636" height="424" src="@/assets/image/food3.jpeg" alt="" class="img-fluid" />
+        </div>
+        <div class="col-md-4 m-auto text-center">
+          <h4 class="mt-4">客房服務</h4>
+          <p class="text-muted">
+            當您不想離開舒適的房間，而不必擔心吃飯或喝水的時間時。
+            無論是早餐、午餐還是晚餐，別墅內用餐都將我們餐廳的高水平服務和烹飪體驗帶到您房間的私密空間。
+            如果您有任何飲食要求或過敏，請告知我們的一名團隊成員。
+          </p>
+        </div>
+      </div>
     </div>
-    <div class="bg-light mt-7 py-6">
-      <div class="col-6 mx-auto">
-        <h3 class="mb-3 text-center">今日優惠</h3>
+    <div class="bg-light mt-7 py-4">
+      <div class="col-4 mx-auto d-flex flex-column justify-content-between align-items-center">
+        <h2 class="mb-6">今日優惠</h2>
         <button class="btn btn-outline-primary">找到更多</button>
       </div>
     </div>
@@ -175,8 +203,10 @@
 import FrontFooter from '@/components/FrontFooter.vue';
 import FrontNavbar from '@/components/FrontNavbar.vue';
 import Gallery from '@/components/Gallery.vue';
+import shoppingData from '@/mixins/shoppingData';
 
 export default {
+  mixins: [shoppingData],
   components: {
     FrontFooter,
     FrontNavbar,

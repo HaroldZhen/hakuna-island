@@ -92,24 +92,42 @@ const api = {
   },
 };
 
-const userAPI = {
-  product: {
-    page: (id = 1) => `/api/${apiPath}/products?page=${id}`, // GET
-    sigle: (id) => `/api/${apiPath}/product/${id}`, // GET
+const frontAPI = {
+  products: {
+    list: (page = 1) => `/api/${apiPath}/products?page=${page}`, // GET
     all: () => `/api/${apiPath}/products/all`, // GET
   },
-  cart: {
-    src: () => `/api/${apiPath}/cart`,
-    delete: (id) => `/api/${apiPath}/cart/${id}`, // DETEL
-    list: () => `/api/${apiPath}/cart`, // GET
-    deleteAll: () => `/api/${apiPath}/carts`, // DETEL
+  product: {
+    item: (id) => `/api/${apiPath}/product/${id}`, // GET
   },
-  order: {
-    src: () => `/api/${apiPath}/order`,
+  cart: {
+    add: () => `/api/${apiPath}/cart`, // POST
+    update: (id) => `/api/${apiPath}/cart/${id}`, // PUT
+    delete: (id) => `/api/${apiPath}/cart/${id}`, // DELETE
+    list: () => `/api/${apiPath}/cart`, // GET
+  },
+  carts: {
+    delete: () => `/api/${apiPath}/carts`, // DELETE
   },
   coupon: {
-    src: () => `/api/${apiPath}/coupon`, // POST
+    use: () => `/api/${apiPath}/coupon`, // POST
+  },
+  order: {
+    create: () => `/api/${apiPath}/order`, // POST
+    item: (id) => `/api/${apiPath}/order/${id}`, // GET
+  },
+  orders: {
+    list: (page = 1) => `/api/${apiPath}/orders?page=${page}`, // GET
+  },
+  pay: {
+    use: (orderId) => `/api/${apiPath}/pay/${orderId}`, // GET
+  },
+  articles: {
+    list: (page = 1) => `/api/${apiPath}/articles?page=${page}`, // GET
+  },
+  article: {
+    item: (id) => `/api/${apiPath}/article/${id}`, // GET
   },
 };
 
-export { hexAxios, userAPI, api };
+export { hexAxios, frontAPI, api };

@@ -1,19 +1,30 @@
 <template>
-  <nav class="d-flex justify-content-center">
-    <ul class="pagination">
-      <li class="page-item">
-        <a class="page-link" href="#" aria-label="Previous">
-          <span aria-hidden="true">&laquo;</span>
-        </a>
+  <nav aria-label="pagination">
+    <ul class="pagination justify-content-center">
+      <li class="page-item" :disabled="pages.has_pre" :class="[pages.has_pre ? '' : 'disabled']">
+        <a class="page-link" href="#" @click.prevent="toPage(pages.current_page - 1)">Pre</a>
       </li>
-      <li class="page-item active"><a class="page-link" href="#">1</a></li>
-      <li class="page-item"><a class="page-link" href="#">2</a></li>
-      <li class="page-item"><a class="page-link" href="#">3</a></li>
-      <li class="page-item">
-        <a class="page-link" href="#" aria-label="Next">
-          <span aria-hidden="true">&raquo;</span>
-        </a>
+      <li class="page-item" v-for="n in pages.total_pages" :key="n" :class="[pages.current_page === n ? 'active' : '']">
+        <a class="page-link" href="#" @click.prevent="toPage(n)">{{ n }}</a>
+      </li>
+      <li class="page-item" :disabled="pages.has_next" :class="[pages.has_next ? '' : 'disabled']">
+        <a class="page-link" href="#" @click.prevent="toPage(pages.current_page + 1)">Next</a>
       </li>
     </ul>
   </nav>
 </template>
+
+<script>
+export default {
+  name: 'Pagination',
+  props: ['pages', 'currentPage'],
+  methods: {
+    toPage(page) {
+      if (this.pages.current_page === page) {
+        return;
+      }
+      this.$emit('toPage', page);
+    },
+  },
+};
+</script>

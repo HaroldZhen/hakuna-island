@@ -96,29 +96,32 @@
           <span class="p-2 ms-3 border-bottom border-1">每頁顯示</span>
         </div>
         <div class="row">
-          <div v-for="n in 10" :key="n" class="col-md-4">
+          <div v-for="product in products" :key="product.id" class="col-md-4">
             <div class="card border-0 mb-4 position-relative position-relative">
-              <img
-                src="https://images.unsplash.com/photo-1591843336741-9f1238f66758?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1867&q=80"
-                class="card-img-top rounded-0"
-                alt="..."
-              />
+              <div style="width: 330px; height:  330px; overflow: hidden;">
+                <img :src="product.imageUrl" class="card-img-top rounded-0" :alt="product.title" />
+              </div>
               <a href="#" class="text-dark">
                 <i class="far fa-heart position-absolute" style="right: 16px; top: 16px"></i>
               </a>
               <div class="card-body p-0">
                 <h4 class="mb-0 mt-3">
-                  <router-link :to="{ name: 'front.product' }">產品名稱 {{ n }}</router-link>
+                  <router-link :to="{ name: 'front.product', params: { id: product.id } }">{{
+                    product.title
+                  }}</router-link>
                 </h4>
                 <p class="card-text mb-0">
-                  NT$1,080 <span class="text-muted "><del>NT$1,200</del></span>
+                  {{ $filters.currency(product.price) }}
+                  <span class="text-muted "
+                    ><del>{{ $filters.currency(product.origin_price) }}</del></span
+                  >
                 </p>
                 <p class="text-muted mt-3"></p>
               </div>
             </div>
           </div>
         </div>
-        <Pagination></Pagination>
+        <Pagination :pages="pages" :currentPage="currentPage" @toPage="getPage" v-if="pages.total_pages"></Pagination>
       </div>
     </div>
   </div>
@@ -129,10 +132,35 @@ import FrontBreadcrumb from '@/components/FrontBreadcrumb.vue';
 import Pagination from '@/components/Pagination.vue';
 
 export default {
+  data() {
+    return {
+      products: [],
+      currentPage: 1,
+      pages: {},
+    };
+  },
   components: {
     FrontBanner,
     FrontBreadcrumb,
     Pagination,
+  },
+  methods: {
+    getProduct() {
+      this.$hexAxios.get(this.$frontAPI.products.list(this.currentPage)).then((res) => {
+        const { success, products, pagination } = res.data;
+        if (success) {
+          this.products = products;
+          this.pages = { ...pagination };
+        }
+      });
+    },
+    getPage(page) {
+      this.currentPage = page;
+      this.getProduct();
+    },
+  },
+  created() {
+    this.getProduct();
   },
 };
 </script>

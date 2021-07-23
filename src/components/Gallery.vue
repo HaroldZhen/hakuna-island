@@ -18,7 +18,7 @@
             style="height: 200px; background-position: center; background-size: cover;"
             :style="{ backgroundImage: 'url(' + item.img + ')' }"
           >
-            <p class="h3 w-100 h-100 text-white mb-0" :class="item.class" >{{ item.text }}</p>
+            <div class="h3 w-100 h-100 text-white mb-0 text-center" :class="item.class" >{{ item.text }}</div>
           </div>
         </swiper-slide>
       </swiper>

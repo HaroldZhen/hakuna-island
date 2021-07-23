@@ -24,7 +24,7 @@ const routes = [
         component: () => import('@/views/front/Products.vue'),
       },
       {
-        path: 'product',
+        path: 'product/:id',
         name: 'front.product',
         component: () => import('@/views/front/Product.vue'),
       },
@@ -71,7 +71,7 @@ const router = createRouter({
   routes,
   linkExactActiveClass: 'active',
   scrollBehavior() {
-    return { x: 0, y: 0 };
+    return { top: 0, behavior: 'smooth' };
   },
 });
 
