@@ -1,9 +1,13 @@
 <template>
   <FrontBanner pageName="開始美好的度假"></FrontBanner>
-  <FrontBreadcrumb>
-    <li class="breadcrumb-item active" aria-current="page">服務項目</li>
-  </FrontBreadcrumb>
-  <div class="container mt-3 mb-7">
+  <div class="breadcrumb mt-3">
+    <div class="container">
+      <FrontBreadcrumb>
+        <li class="breadcrumb-item active" aria-current="page">服務項目</li>
+      </FrontBreadcrumb>
+    </div>
+  </div>
+  <div class="container mt-3 mb-7" style="min-height: 100vh;">
     <div class="row">
       <!-- <div class="col-md-2">
         <div class="accordion border border-bottom border-top-0 border-start-0 border-end-0 mb-3" id="accordionExample">
@@ -144,6 +148,7 @@ export default {
   methods: {
     getProduct() {
       this.$hexAxios.get(this.$frontAPI.products.list(this.currentPage)).then((res) => {
+        this.$bus.$emit('isLoading', { status: false });
         const { success, products, pagination } = res.data;
         if (success) {
           this.products = products;
@@ -157,6 +162,7 @@ export default {
     },
   },
   created() {
+    this.$bus.$emit('isLoading', { status: true });
     this.getProduct();
   },
 };

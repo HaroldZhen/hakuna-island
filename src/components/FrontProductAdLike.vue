@@ -5,9 +5,9 @@
         <h3 class=" text-secondary">{{ title }}</h3>
         <div class="container mt-4 mb-5">
           <div class="row">
-            <div class="col-12 col-md-6 col-lg-3" v-for="product in products" :key="product.id">
+            <div class="col-6 col-lg-3" v-for="product in products" :key="product.id">
               <div class="card shadow-sm mb-4 position-relative">
-                <div style="height: 170px; overflow: hidden;">
+                <div>
                   <img :src="product.imageUrl" class="card-img-top rounded-0" :alt="product.title" />
                 </div>
                 <a href="#" class="text-dark"> </a>

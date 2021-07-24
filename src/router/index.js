@@ -50,7 +50,12 @@ const routes = [
       },
     ],
   },
-
+  // http://localhost:8080/#/admin/login
+  {
+    path: '/login',
+    name: 'admin.login',
+    component: () => import('@/views/admin/Login.vue'),
+  },
   /* == Admin 管理者後台 == */
   {
     path: '/admin',
@@ -59,8 +64,28 @@ const routes = [
     children: [
       {
         path: '',
-        name: 'admin.home',
-        component: () => import('@/views/admin/Home.vue'),
+        name: 'admin.product',
+        component: () => import('@/views/admin/Product.vue'),
+      },
+      {
+        path: 'order',
+        name: 'admin.order',
+        component: () => import('@/views/admin/Order.vue'),
+      },
+      {
+        path: 'coupon',
+        name: 'admin.coupon',
+        component: () => import('@/views/admin/Coupon.vue'),
+      },
+      {
+        path: 'article',
+        name: 'admin.article',
+        component: () => import('@/views/admin/Article.vue'),
+      },
+      {
+        path: 'phoneorder',
+        name: 'admin.phoneOrder',
+        component: () => import('@/views/admin/PhoneOrder.vue'),
       },
     ],
   },

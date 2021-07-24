@@ -1,12 +1,5 @@
 <template>
   <FrontBanner :pageName="product.category"></FrontBanner>
-  <FrontBreadcrumb>
-    <li class="breadcrumb-item">
-      <router-link :to="{ name: 'front.products' }">服務項目</router-link>
-    </li>
-    <li class="breadcrumb-item text-secondary">{{ product.category }}</li>
-    <li class="breadcrumb-item active" aria-current="page">{{ product.title }}</li>
-  </FrontBreadcrumb>
   <div class="container mt-md-5 mt-3 mb-7">
     <div class="ProductsDetails">
       <div class="container ProductsDetails-box mx-auto" v-if="product.title">
@@ -14,7 +7,14 @@
           <div class="col-xl-7 col-lg-8 ProductsDetails-img mb-lg-0 mb-4">
             <img class="img-fluid" :src="product.imageUrl" alt="" />
           </div>
-          <div class="col-xl-5 col-lg-4 pt-xl-3">
+          <div class="col-xl-5 col-lg-4">
+            <FrontBreadcrumb>
+              <li class="breadcrumb-item">
+                <router-link :to="{ name: 'front.products' }">服務項目</router-link>
+              </li>
+              <li class="breadcrumb-item text-secondary">{{ product.category }}</li>
+              <li class="breadcrumb-item active" aria-current="page">{{ product.title }}</li>
+            </FrontBreadcrumb>
             <div class="ProductsDetails-content">
               <h1 class="mb-0 font-weight-bold">{{ product.title }}</h1>
               <hr />
