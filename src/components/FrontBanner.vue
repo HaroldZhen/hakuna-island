@@ -9,7 +9,7 @@ export default {
   props: {
     pageName: {
       type: String,
-      default: '建立訂單',
+      default: '',
     },
     bgImage: {
       type: String,

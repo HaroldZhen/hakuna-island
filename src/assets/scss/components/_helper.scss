@@ -40,7 +40,7 @@
   position: fixed;
   top: 72px;
   right: 4px;
-  z-index: $zindex-fixed;
+  z-index: 1210;
 
   @include media-breakpoint-down(md) {
     & {
@@ -50,9 +50,14 @@
   }
 }
 
+.font-pacifico{
+  font-family: 'Pacifico', cursive;
+}
+
 .coupon__input::placeholder,
 .credit__input::placeholder {
   font-size: $font-size-sm;
   color: $gray-600;
   font-weight: 300;
 }
+

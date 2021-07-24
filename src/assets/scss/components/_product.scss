@@ -1,0 +1,11 @@
+.product{
+  &__img{
+    max-height: 303px;
+    overflow: hidden;
+    position: relative;
+  }
+  &__description{
+    max-height: 100px;
+    overflow: hidden;
+  }
+}

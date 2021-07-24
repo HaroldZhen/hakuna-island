@@ -253,7 +253,7 @@ export default {
         },
       };
       this.$hexAxios
-        .post(this.$frontAPI.coupon.coupon(), data)
+        .post(this.$frontAPI.coupon.use(), data)
         .then((res) => {
           this.$bus.$emit('isLoading', { status: false });
           const { success, message } = res.data;

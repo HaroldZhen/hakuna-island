@@ -1,5 +1,5 @@
 <template>
-  <FrontBanner></FrontBanner>
+  <FrontBanner :pageName="product.category"></FrontBanner>
   <FrontBreadcrumb>
     <li class="breadcrumb-item">
       <router-link :to="{ name: 'front.products' }">服務項目</router-link>
@@ -8,85 +8,45 @@
     <li class="breadcrumb-item active" aria-current="page">{{ product.title }}</li>
   </FrontBreadcrumb>
   <div class="container mt-md-5 mt-3 mb-7">
-    <div class="row align-items-center">
-      <div class="col-md-7">
-        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-          <div class="carousel-inner">
-            <div class="carousel-item active">
-              <img :src="product.imageUrl" class="d-block w-100" :alt="product.title" />
-            </div>
+    <div class="ProductsDetails">
+      <div class="container ProductsDetails-box mx-auto" v-if="product.title">
+        <div class="row ProductsDetails-main mb-5">
+          <div class="col-xl-7 col-lg-8 ProductsDetails-img mb-lg-0 mb-4">
+            <img class="img-fluid" :src="product.imageUrl" alt="" />
           </div>
-          <!-- <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-          </a>
-          <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-          </a> -->
-        </div>
-      </div>
-      <div class="col-md-5">
-        <h2 class="fw-bold h1 mb-1">{{ product.title }}</h2>
-        <p class="mb-0 text-muted text-end">
-          <del>{{ $filters.currency(product.origin_price) }}</del>
-        </p>
-        <p class="h4 fw-bold text-end">{{ $filters.currency(product.price) }}</p>
-        <div class="row align-items-center">
-          <div class="col-6">
-            <div class="input-group my-3 bg-light rounded">
-              <div class="input-group-prepend">
-                <button
-                  class="btn btn-outline-primary border-0 py-2"
-                  @click="tempProduct.qty--"
-                  type="button"
-                  id="button-addon1"
+          <div class="col-xl-5 col-lg-4 pt-xl-3">
+            <div class="ProductsDetails-content">
+              <h1 class="mb-0 font-weight-bold">{{ product.title }}</h1>
+              <hr />
+              <div class="d-flex justify-content-between align-items-center mb-4">
+                <span class="text-secondary text-decoration-line-through"
+                  >原價: {{ $filters.currency(product.origin_price) }}</span
                 >
-                  <i class="fas fa-minus"></i>
-                </button>
+                <span class="offer">優惠價: {{ $filters.currency(product.price) }}</span>
               </div>
-              <input
-                type="text"
-                class="form-control border-0 text-center my-auto text-secondary shadow-none bg-light"
-                placeholder=""
-                aria-label="Example text with button addon"
-                aria-describedby="button-addon1"
-                v-model="tempProduct.qty"
-              />
-              <div class="input-group-append">
-                <button
-                  class="btn btn-outline-primary border-0 py-2"
-                  @click="tempProduct.qty++"
-                  type="button"
-                  id="button-addon2"
+              <select name="count" class="form-control mb-3" v-model="tempProduct.qty">
+                <option :value="num" v-for="num in 10" :key="num"> 總共 {{ num }} {{ product.unit }} </option>
+              </select>
+              <div class="d-flex justify-content-end total-price">
+                <span class=""
+                  >小計 <strong>{{ $filters.currency(tempProduct.qty * product.price) }}</strong></span
                 >
-                  <i class="fas fa-plus"></i>
+              </div>
+              <div class="text-right mt-3">
+                <button type="button" class="btn btn-primary w-100" @click="addItemToCart(product.id, tempProduct.qty)">
+                  加入計畫
                 </button>
               </div>
             </div>
           </div>
-          <div class="col-6">
-            <a
-              role="button"
-              @click.prevent="addItemToCart(product.id, tempProduct.qty)"
-              href="#"
-              class="text-nowrap btn btn-primary text-white w-100 py-2"
-              >放入購物車</a
-            >
-          </div>
         </div>
-      </div>
-    </div>
-    <div class="row my-5">
-      <div class="col-md-4">
-        <p>
-          {{ product.description }}
-        </p>
-      </div>
-      <div class="col-md-3">
-        <p class="text-muted">
-          {{ product.content }}
-        </p>
+
+        <div class="ProductsDetails-description pt-3 mb-6">
+          <div class="d-flex align-items-center mb-3">
+            <h3 class="ml-2 mb-0">特色介紹</h3>
+          </div>
+          <p class="mb-5 text-secondary">{{ product.description }}</p>
+        </div>
       </div>
     </div>
   </div>
@@ -127,6 +87,7 @@ export default {
     },
     addItemToCart() {},
     addToCart(pid, qty) {
+      this.$bus.$emit('isLoading', { status: true });
       const data = {
         data: {
           product_id: pid,
@@ -138,6 +99,7 @@ export default {
         .then((res) => {
           const { success, message } = res.data;
           const { product } = res.data.data;
+          this.$bus.$emit('isLoading', { status: false, ms: 2000 });
           if (success) {
             this.$bus.$emit('push-message', {
               style: 'success',

@@ -7,18 +7,20 @@
       <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
     <div class="offcanvas-body pt-0">
-      <section class="shopping position-relative">
+      <section class="shopping position-relative" v-if="shoppingCart.cart.carts.length > 0">
         <div class="shopping__list pe-2 mb-3">
           <div
             v-for="item in shoppingCart.cart.carts"
             :key="item.id"
             class="shopping__item d-flex justify-content-between border-bottom border-1 pb-2 mb-2"
           >
-            <a class="shopping__image me-2">
+            <div class="shopping__image me-2">
               <img class="img-fluid" :src="item.product.imageUrl" />
-            </a>
+            </div>
             <div class="flex-grow-1 d-flex flex-column justify-content-around">
-              <a href="#" :data-id="item.id" class="h5 m-0">{{ item.product.title }}</a>
+              <router-link class="h5 m-0" :to="{ name: 'front.product', params: { id: item.id } }">{{
+                item.product.title
+              }}</router-link>
               <p class="text-muted m-0">{{ item.qty }} x {{ $filters.currency(item.product.price) }}</p>
             </div>
             <div class="d-flex align-items-center">
@@ -40,6 +42,12 @@
           aria-label="Close"
           :to="{ name: 'front.cart' }"
           >來去結帳</router-link
+        >
+      </section>
+      <section v-else>
+        <h3 class="text-center text-secondary py-6 mb-3 border border-1">您尚未選擇任何服務喔</h3>
+        <router-link data-bs-dismiss="offcanvas" class="btn btn-outline-primary w-100" :to="{ name: 'front.products' }"
+          >來去逛逛</router-link
         >
       </section>
     </div>

@@ -1,14 +1,14 @@
 <template>
   <nav class="navbar navbar-expand-md fixed-top navbar__custom" :class="navbarStyle">
     <div class="container-fluid container-lg">
-      <router-link class="navbar-brand me-auto" :to="{ name: 'front.index' }">Hakuna Island</router-link>
+      <router-link class="navbar-brand me-auto font-pacifico" :to="{ name: 'front.index' }">Hakuna Island</router-link>
       <div class="navbar-nav d-flex flex-row order-md-last">
-        <a class="nav-link nav__icon p-2 me-2" href="#"
+        <!-- <a class="nav-link nav__icon p-2 me-2" href="#"
           ><span class="material-icons">
             favorite_border
           </span>
-          <!-- <span class="material-icons">favorite</span> -->
-        </a>
+          <span class="material-icons">favorite</span>
+        </a> -->
         <a
           class="nav-link nav__icon cart__icon p-2"
           href="#"
@@ -40,8 +40,12 @@
             >首頁<span class="sr-only">(current)</span></router-link
           >
           <router-link :to="{ name: 'front.products' }" class="nav-item nav-link me-4">服務項目</router-link>
-          <a class="nav-item nav-link me-4" href="./detail.html">最新消息</a>
-          <a class="nav-item nav-link me-4" href="#">關於我們</a>
+          <router-link class="nav-item nav-link me-4" :to="{ name: 'front.index' }"
+          >最新消息</router-link
+        >
+          <router-link class="nav-item nav-link me-4" :to="{ name: 'front.index' }"
+          >關於我們</router-link
+        >
         </div>
       </div>
     </div>

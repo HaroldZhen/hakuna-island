@@ -29,19 +29,19 @@
       ></div>
     </div>
   </div>
-  <FrontProductAdHot></FrontProductAdHot>
+  <FrontProductAdLike title="熱賣商品"></FrontProductAdLike>
 </template>
 <script>
 import FrontBanner from '@/components/FrontBanner.vue';
 import FrontProgressStep from '@/components/FrontProgressStep.vue';
-import FrontProductAdHot from '@/components/FrontProductAdHot.vue';
+import FrontProductAdLike from '@/components/FrontProductAdLike.vue';
 
 export default {
   inject: ['shoppingCart'],
   components: {
     FrontBanner,
     FrontProgressStep,
-    FrontProductAdHot,
+    FrontProductAdLike,
   },
   data() {
     return {
