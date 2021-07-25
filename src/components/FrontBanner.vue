@@ -1,5 +1,5 @@
 <template>
-  <div class="banner position-relative d-flex align-items-center justify-content-center">
+  <div class="banner position-relative d-flex align-items-center justify-content-center" id="banner">
     <div class="banner__wrap" :style="{ backgroundImage: `url(${bgImage})` }"></div>
     <h2 class="banner__title text-white">{{ pageName }}</h2>
   </div>

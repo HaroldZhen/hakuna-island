@@ -1,0 +1,16 @@
+.booking-reason__item {
+  min-height: 200px;
+  clip-path: polygon(0 0, 85% 0, 100% 50%, 85% 100%, 0 100%, 15% 50%);
+}
+.booking-reason__content{
+  min-height: 96px;
+}
+
+@include media-breakpoint-down(md) {
+  .booking-reason__item {
+    clip-path: unset;
+  }
+  .booking-reason__content{
+    height: 190px;
+  }
+}

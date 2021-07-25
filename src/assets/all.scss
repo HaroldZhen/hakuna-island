@@ -1,19 +1,25 @@
 // vender
 @import "@/assets/scss/vender/_bootstrap5";
-@import "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css";
+// @import "~@/assets/scss/helpers/variables";
+// @import "~bootstrap/scss/bootstrap";
 
-// font
-@import '@/assets/scss/base/_typography';
+// layout
+@import '@/assets/scss/layout/_header';
+@import '@/assets/scss/layout/_navbar';
+@import '@/assets/scss/layout/_footer';
+
+// base
 @import '@/assets/scss/base/_reset';
+@import '@/assets/scss/base/_typography';
 
 // components
-@import '@/assets/scss/components/_product';
-@import '@/assets/scss/components/_order';
 @import '@/assets/scss/components/_banner';
-@import '@/assets/scss/components/_navbar';
-@import '@/assets/scss/components/_process';
 @import '@/assets/scss/components/_cart';
+@import '@/assets/scss/components/_gallery';
 @import '@/assets/scss/components/_helper';
+@import '@/assets/scss/components/_order';
+@import '@/assets/scss/components/_process';
+@import '@/assets/scss/components/_product';
 
-// custom
-@import '@/assets/scss/layout/_custom';
+// pages
+@import '@/assets/scss/pages/_home';

@@ -11,6 +11,8 @@ import { localize, setLocale } from '@vee-validate/i18n';
 import zhTW from '@vee-validate/i18n/dist/locale/zh_TW.json';
 import Loading from 'vue3-loading-overlay';
 import 'vue3-loading-overlay/dist/vue3-loading-overlay.css';
+import AOS from 'aos';
+import 'aos/dist/aos.css'; // You can also use <link> for styles
 
 import App from './App.vue';
 import { hexAxios, frontAPI } from './response/hexAxios';
@@ -42,6 +44,8 @@ app.config.globalProperties.$filters = {
   currency,
   dateToTimestamp,
 };
+
+AOS.init();
 
 app.config.globalProperties.$hexAxios = hexAxios;
 app.config.globalProperties.$frontAPI = frontAPI;

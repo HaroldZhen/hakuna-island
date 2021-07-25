@@ -111,6 +111,14 @@ export default {
         .then(this.$bus.$emit('cartList', 1500));
     },
   },
+  watch: {
+    $route() {
+      if (this.$route.params.id) {
+        const pid = this.$route.params.id;
+        this.getProduct(pid);
+      }
+    },
+  },
   created() {
     const pid = this.$route.params.id;
     this.addItemToCart = _.debounce(() => {

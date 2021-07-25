@@ -119,10 +119,7 @@ export default {
   },
 };
 </script>
-<style scoped lang="scss">
-.admin-wrap :deep() {
-  @import '@/assets/all';
-}
+<style lang="scss">
 .admin-wrap {
   background-color: #f9fafd;
 }
@@ -138,10 +135,6 @@ export default {
   overflow-x: auto;
   overflow-y: hidden;
 }
-.main > * {
-  flex-shrink: 0;
-}
-
 .b-example-divider {
   width: 1.5rem;
   height: 100%;

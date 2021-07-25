@@ -40,9 +40,6 @@
       color: $navbar-dark-active-color;
     }
   }
-  .nav__icon {
-    line-height: 0;
-  }
 }
 @mixin navbarLight {
   .navbar-brand {
@@ -89,13 +86,54 @@
   }
 }
 
-.navbar__custom {
+.navbar {
   transition: 0.5s background-color;
+  @include navbarLight();
+  .navbar-brand {
+    font-size: 1.8rem;
+  }
+  .nav__icon {
+    color: $primary;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    & > .material-icons {
+      line-height: 0;
+      font-size: 2rem;
+    }
+  }
+  .nav__carts {
+    position: absolute;
+    top: -10px;
+    right: 11px;
+    display: block;
+    width: 1.2rem;
+    height: 1.2rem;
+    line-height: 1.1rem;
+    font-size: 0.7rem;
+    border-radius: 50%;
+    background-color: $red;
+    color: $white;
+    text-align: center;
+  }
+  .navbar-toggler {
+    & > .material-icons {
+      font-size: 2rem;
+    }
+  }
+}
+
+.navbar-dark {
   @include navbarDark();
+  .nav__icon {
+    color: $white;
+  }
 }
 
 @include media-breakpoint-down(md) {
-  .navbar__custom {
+  .navbar,
+  .navbar-dark {
     background-color: $white;
     padding-top: 0;
     padding-bottom: 0;
@@ -103,10 +141,20 @@
     & > .container-fluid {
       padding-right: 0px;
     }
+    .navbar-brand {
+      font-size: 1.6rem;
+      padding: 0;
+    }
+    .nav__icon {
+      color: $primary;
+    }
   }
 }
+
 .navbar__light {
-  transition: 0.4s background-color;
+  .nav__icon {
+    color: $primary;
+  }
   background-color: rgba($white, 0.8);
   box-shadow: $box-shadow-sm;
   @include media-breakpoint-down(md) {
@@ -114,3 +162,4 @@
   }
   @include navbarLight();
 }
+

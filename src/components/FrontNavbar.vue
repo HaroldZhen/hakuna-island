@@ -1,16 +1,16 @@
 <template>
-  <nav class="navbar navbar-expand-md fixed-top navbar__custom" :class="navbarStyle">
+  <nav class="navbar navbar-expand-md fixed-top" :class="navbarStyle">
     <div class="container-fluid container-lg">
       <router-link class="navbar-brand me-auto font-pacifico" :to="{ name: 'front.index' }">Hakuna Island</router-link>
       <div class="navbar-nav d-flex flex-row order-md-last">
-        <!-- <a class="nav-link nav__icon p-2 me-2" href="#"
+        <a class="nav__icon me-2" href="#"
           ><span class="material-icons">
             favorite_border
           </span>
-          <span class="material-icons">favorite</span>
-        </a> -->
+          <!-- <span class="material-icons">favorite</span> -->
+        </a>
         <a
-          class="nav-link nav__icon cart__icon p-2"
+          class="nav__icon position-relative p-2"
           href="#"
           data-bs-toggle="offcanvas"
           data-bs-target="#offcanvasRight"
@@ -18,7 +18,7 @@
           ><span class=" material-icons">
             shopping_cart
           </span>
-          <span class="cart__num"> {{ cartCount }} </span></a
+          <span class="nav__carts"> {{ cartCount }} </span></a
         >
       </div>
       <button
@@ -40,12 +40,8 @@
             >首頁<span class="sr-only">(current)</span></router-link
           >
           <router-link :to="{ name: 'front.products' }" class="nav-item nav-link me-4">服務項目</router-link>
-          <router-link class="nav-item nav-link me-4" :to="{ name: 'front.index' }"
-          >最新消息</router-link
-        >
-          <router-link class="nav-item nav-link me-4" :to="{ name: 'front.index' }"
-          >關於我們</router-link
-        >
+          <router-link class="nav-item nav-link me-4" :to="{ name: 'front.index' }">最新消息</router-link>
+          <router-link class="nav-item nav-link me-4" :to="{ name: 'front.index' }">關於我們</router-link>
         </div>
       </div>
     </div>
@@ -62,6 +58,7 @@
       <span class="scroll-top__text fw-bolder">Top</span>
     </a>
   </div>
+  <div id="navbar"></div>
 </template>
 <script>
 import FrontSidebar from '@/components/FrontSidebar.vue';
@@ -69,26 +66,23 @@ import FrontSidebar from '@/components/FrontSidebar.vue';
 export default {
   name: 'FrontNavbar',
   inject: ['shoppingCart'],
+  props: ['isNavbarDark'],
   components: {
     FrontSidebar,
   },
-  props: {
-    isBgLight: {
-      default: true,
-    },
-  },
   data() {
     return {
+      // isBgWhite: this.isNavbarDark,
+      isNavbarLight: false,
       isScrollTopActive: false,
-      isNavbarLight: this.isBgLight,
-      isBgWhite: this.isBgLight,
     };
   },
   computed: {
     navbarStyle() {
       return {
+        'navbar-dark': this.isNavbarDark,
+        'bg-white': (!this.isNavbarDark && !this.isNavbarLight),
         navbar__light: this.isNavbarLight,
-        'bg-white': this.isBgWhite,
       };
     },
     scrollStyle() {
@@ -112,13 +106,8 @@ export default {
     window.addEventListener('scroll', () => {
       const windowY = window.scrollY;
       this.isScrollTopActive = windowY > 300;
-      if (this.isBgLight) {
-        const banner = document.querySelector('.banner');
-        this.isBgWhite = windowY < banner.offsetHeight;
-      } else {
-        const banner = document.querySelector('.hero');
-        this.isNavbarLight = windowY > banner.offsetHeight - 110;
-      }
+      const banner = document.querySelector('#banner');
+      this.isNavbarLight = windowY > banner.offsetHeight - 110;
     });
   },
 };

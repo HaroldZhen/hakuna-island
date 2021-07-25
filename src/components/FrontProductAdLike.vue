@@ -5,7 +5,7 @@
         <h3 class=" text-secondary">{{ title }}</h3>
         <div class="container mt-4 mb-5">
           <div class="row">
-            <div class="col-6 col-lg-3" v-for="product in products" :key="product.id">
+            <div class="col-6 col-lg-3 position-relative" v-for="product in randomProducts" :key="product.id">
               <div class="card shadow-sm mb-4 position-relative">
                 <div>
                   <img :src="product.imageUrl" class="card-img-top rounded-0" :alt="product.title" />
@@ -13,7 +13,9 @@
                 <a href="#" class="text-dark"> </a>
                 <div class="card-body">
                   <h5 class="mb-0">
-                    <a href="#">{{ product.title }}</a>
+                    <router-link class="stretched-link" :to="{ name: 'front.product', params: { id: product.id } }">{{
+                      product.title
+                    }}</router-link>
                   </h5>
                   <p class="card-text mb-0">
                     {{ $filters.currency(product.price)
@@ -32,6 +34,9 @@
   </div>
 </template>
 <script>
+function getRandomInt(max) {
+  return Math.floor(Math.random() * max);
+}
 export default {
   props: {
     num: {
@@ -46,14 +51,27 @@ export default {
   data() {
     return {
       products: [],
+      randomProducts: [],
     };
   },
   methods: {
+    getLookAlike() {
+      const filterProducts = this.products;
+      const arrSet = new Set([]);
+      for (let i = 0; arrSet.size < this.num; i + 1) {
+        const num = getRandomInt(filterProducts.length);
+        arrSet.add(num);
+      }
+      arrSet.forEach((i) => {
+        this.randomProducts.push(filterProducts[i]);
+      });
+    },
     getProduct() {
       this.$hexAxios.get(this.$frontAPI.products.all()).then((res) => {
         const { success, products } = res.data;
         if (success) {
-          this.products = products.slice(0, this.num);
+          this.products = products;
+          this.getLookAlike();
         }
       });
     },

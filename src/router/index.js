@@ -11,13 +11,13 @@ const routes = [
   // http://localhost:8080/#/order
   {
     path: '/',
-    name: 'front.index',
-    component: () => import('@/views/front/Home.vue'),
-  },
-  {
-    path: '/',
-    component: () => import('@/components/layout/FrontLayout.vue'),
+    component: () => import('@/views/layout/FrontLayout.vue'),
     children: [
+      {
+        path: '',
+        name: 'front.index',
+        component: () => import('@/views/front/Home.vue'),
+      },
       {
         path: 'products',
         name: 'front.products',
@@ -60,7 +60,7 @@ const routes = [
   {
     path: '/admin',
     name: 'admin.index',
-    component: () => import('@/components/layout/AdminLayout.vue'),
+    component: () => import('@/views/layout/AdminLayout.vue'),
     children: [
       {
         path: '',

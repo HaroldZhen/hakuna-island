@@ -4,7 +4,7 @@ body {
 }
 
 // 改造主要按鈕文字顏色: 白色
-.btn-primary{
+.btn-primary {
   color: $white;
   &:hover {
     color: $white;
@@ -23,5 +23,29 @@ body {
   &:disabled,
   &.disabled {
     color: $white;
+  }
+}
+.btn-outline-primary {
+  &:hover {
+    color: $white;
+  }
+  .btn-check:checked + &,
+  .btn-check:active + &,
+  &:active,
+  &.active,
+  .show > &.dropdown-toggle {
+    color: $white;
+  }
+  &:disabled,
+  &.disabled {
+    color: $white;
+  }
+}
+.bg{
+  &-cover {
+    background-size: cover;
+  }
+  &-center {
+    background-position: center;
   }
 }

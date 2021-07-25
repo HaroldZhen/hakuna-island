@@ -1,4 +1,8 @@
 <template>
+  <FrontNavbar v-model:isNavbarDark="isNavbarDark"></FrontNavbar>
+  <main>
+    <router-view v-model:isNavbarDark="isNavbarDark"></router-view>
+  </main>
   <footer class="bg-primary text-white py-6">
     <div class="container">
       <div class="d-flex align-items-center justify-content-between text-white mb-md-7 mb-4">
@@ -28,3 +32,22 @@
     </div>
   </footer>
 </template>
+<script>
+import FrontNavbar from '@/components/FrontNavbar.vue';
+import shoppingData from '@/mixins/shoppingData';
+
+export default {
+  mixins: [shoppingData],
+  components: {
+    FrontNavbar,
+  },
+  data() {
+    return {
+      isNavbarDark: false,
+    };
+  },
+};
+</script>
+<style lang="scss">
+/* @import '@/assets/all'; */
+</style>

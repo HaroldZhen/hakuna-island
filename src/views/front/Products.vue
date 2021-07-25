@@ -93,14 +93,14 @@
           </div>
         </div>
       </div> -->
-      <div class="col-md-10 mx-auto">
+      <div class="col-12 col-lg-10 mx-auto">
         <div class="d-flex mb-2">
           <h2 class="h3 me-auto">全部商品</h2>
           <!-- <span class="p-2 border-bottom border-1">商品排序</span>
           <span class="p-2 ms-3 border-bottom border-1">每頁顯示</span> -->
         </div>
         <div class="row">
-          <div v-for="product in products" :key="product.id" class="col-md-4">
+          <div v-for="product in products" :key="product.id" class="col-12 col-md-6 col-lg-4">
             <div class="card mb-3">
               <div class="product__img">
                 <img :src="product.imageUrl" class="card-img-top img-fluid" :alt="product.title" />
