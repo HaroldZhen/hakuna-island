@@ -2,7 +2,7 @@
   <section class="process py-6">
     <div class="container">
       <div class="col-12 col-md-10 mx-auto position-relative">
-        <ul class="d-flex justify-content-between align-items-center">
+        <ul class="d-flex justify-content-between align-items-center ps-0">
           <li
             v-for="item in steps"
             :key="Object.keys(item)"
