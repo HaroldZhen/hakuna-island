@@ -1,16 +1,51 @@
-.booking-reason__item {
-  min-height: 200px;
-  clip-path: polygon(0 0, 85% 0, 100% 50%, 85% 100%, 0 100%, 15% 50%);
+.booking-reason {
+  &__item {
+    min-height: 200px;
+    clip-path: polygon(0 0, 85% 0, 100% 50%, 85% 100%, 0 100%, 15% 50%);
+  }
+  &__content {
+    height: 96px;
+    overflow: hidden;
+  }
 }
-.booking-reason__content{
-  min-height: 96px;
+@include media-breakpoint-down(md) {
+  .booking-reason {
+    &__item {
+      clip-path: unset;
+    }
+    &__content {
+      height: 190px;
+    }
+  }
 }
 
-@include media-breakpoint-down(md) {
-  .booking-reason__item {
-    clip-path: unset;
+// rooms
+.rooms {
+  &__box {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    opacity: 0;
+    background-color: rgba(#000, 0.3);
+    transition: all 0.4s ease-in;
   }
-  .booking-reason__content{
-    height: 190px;
+  &__card {
+    &:hover {
+      .rooms__box {
+        opacity: 1;
+      }
+    }
   }
+}
+
+.coupon {
+  background-image: linear-gradient(rgba(#000, 0.4), rgba(#000, 0.4)),
+    url("~@/assets/image/coupon.jpg");
+    background-position: center center;
+    background-size: cover;
 }

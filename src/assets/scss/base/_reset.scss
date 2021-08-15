@@ -1,6 +1,17 @@
 body {
   font-family: "Noto Sans TC", "Segoe UI", "Microsoft JhengHei",
     "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.5;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+  padding: 0;
 }
 
 // 改造主要按鈕文字顏色: 白色
@@ -35,7 +46,7 @@ body {
     color: $white;
   }
 }
-.bg{
+.bg {
   &-cover {
     background-size: cover;
   }

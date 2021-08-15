@@ -18,7 +18,7 @@
           ><span class=" material-icons">
             shopping_cart
           </span>
-          <span class="nav__carts"> {{ cartCount }} </span></a
+          <span class="nav__carts" v-if="cartCount !== 0"> {{ cartCount }} </span></a
         >
       </div>
       <button
@@ -39,7 +39,11 @@
           <router-link class="nav-item nav-link me-4" :to="{ name: 'front.index' }"
             >首頁<span class="sr-only">(current)</span></router-link
           >
-          <router-link :to="{ name: 'front.products' }" class="nav-item nav-link me-4">服務項目</router-link>
+          <router-link
+            :to="{ name: 'front.products' }"
+            class="nav-item nav-link me-4"
+            >服務項目</router-link
+          >
           <router-link class="nav-item nav-link me-4" :to="{ name: 'front.index' }">最新消息</router-link>
           <router-link class="nav-item nav-link me-4" :to="{ name: 'front.index' }">關於我們</router-link>
         </div>
@@ -81,7 +85,7 @@ export default {
     navbarStyle() {
       return {
         'navbar-dark': this.isNavbarDark,
-        'bg-white': (!this.isNavbarDark && !this.isNavbarLight),
+        'bg-white': !this.isNavbarDark && !this.isNavbarLight,
         navbar__light: this.isNavbarLight,
       };
     },
