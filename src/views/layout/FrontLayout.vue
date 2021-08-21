@@ -33,7 +33,7 @@
   </footer>
 </template>
 <script>
-import FrontNavbar from '@/components/FrontNavbar.vue';
+import FrontNavbar from '@/components/front/Navbar.vue';
 import shoppingData from '@/mixins/shoppingData';
 
 export default {

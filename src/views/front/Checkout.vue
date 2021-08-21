@@ -114,7 +114,6 @@
                       rules="required"
                       v-model="user.name"
                     ></VField>
-
                     <ErrorMessage name="姓名" class="invalid-feedback"></ErrorMessage>
                   </div>
                   <div class="col-12">
@@ -265,7 +264,16 @@
                     </div>
                   </div>
                   <div class="col-12">
-                    <input type="text" class="form-control" v-model="info.road" id="road" placeholder="地址" />
+                    <VField
+                    id="road"
+                    name="地址"
+                    type="text"
+                    class="form-control"
+                    :class="{ 'is-invalid': errors['地址'], 'is-valid': !errors['地址'] && info.road }"
+                    rules="required"
+                    v-model="info.road"
+                  ></VField>
+                    <ErrorMessage name="地址" class="invalid-feedback"></ErrorMessage>
                   </div>
                 </div>
               </div>
@@ -327,8 +335,8 @@
   </VForm>
 </template>
 <script>
-import FrontBanner from '@/components/FrontBanner.vue';
-import FrontProgressStep from '@/components/FrontProgressStep.vue';
+import FrontBanner from '@/components/front/Banner.vue';
+import FrontProgressStep from '@/components/front/ProgressStep.vue';
 import cityJson from '@/assets/json/city.json';
 
 export default {

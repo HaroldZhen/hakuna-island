@@ -44,8 +44,7 @@
             class="nav-item nav-link me-4"
             >服務項目</router-link
           >
-          <router-link class="nav-item nav-link me-4" :to="{ name: 'front.index' }">最新消息</router-link>
-          <router-link class="nav-item nav-link me-4" :to="{ name: 'front.index' }">關於我們</router-link>
+          <router-link class="nav-item nav-link me-4" :to="{ name: 'front.about' }">關於我們</router-link>
         </div>
       </div>
     </div>
@@ -65,7 +64,7 @@
   <div id="navbar"></div>
 </template>
 <script>
-import FrontSidebar from '@/components/FrontSidebar.vue';
+import FrontSidebar from '@/components/front/Sidebar.vue';
 
 export default {
   name: 'FrontNavbar',

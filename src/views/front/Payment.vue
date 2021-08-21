@@ -139,8 +139,8 @@
   </section>
 </template>
 <script>
-import FrontBanner from '@/components/FrontBanner.vue';
-import FrontProgressStep from '@/components/FrontProgressStep.vue';
+import FrontBanner from '@/components/front/Banner.vue';
+import FrontProgressStep from '@/components/front/ProgressStep.vue';
 
 export default {
   components: {

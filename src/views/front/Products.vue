@@ -101,7 +101,7 @@
         </div>
         <div class="row">
           <div v-for="product in products" :key="product.id" class="col-12 col-md-6 col-lg-4">
-            <div class="card mb-3">
+            <div class="card rooms__card mb-3 position-relative">
               <div class="product__img">
                 <img :src="product.imageUrl" class="card-img-top img-fluid" :alt="product.title" />
               </div>
@@ -112,12 +112,19 @@
                 <h5 class="card-title">{{ product.title }}</h5>
                 <p class="card-text product__description">{{ product.description }}</p>
               </div>
-              <div class="card-footer border-0 bg-transparent">
+              <div class="card-footer pt-0 border-0 bg-transparent">
+                <div class="d-flex justify-content-between align-content-center">
+                  <del class="text-secondary">{{ $filters.currency(product.origin_price) }}</del>
+                  <p class="fs-5d5 text-success">{{ $filters.currency(product.price) }} / {{ product.unit }}</p>
+                </div>
+              </div>
+              <div class="d-flex justify-content-center align-items-center rooms__box">
                 <router-link
-                  class="btn btn-primary stretched-link"
+                  class="btn btn-outline-white me-2"
                   :to="{ name: 'front.product', params: { id: product.id } }"
                   >查看更多</router-link
                 >
+                <button class="btn btn-outline-white" @click="addToCart(product.id, 1)">加入行程</button>
               </div>
             </div>
           </div>
@@ -128,8 +135,8 @@
   </div>
 </template>
 <script>
-import FrontBanner from '@/components/FrontBanner.vue';
-import FrontBreadcrumb from '@/components/FrontBreadcrumb.vue';
+import FrontBanner from '@/components/front/Banner.vue';
+import FrontBreadcrumb from '@/components/front/Breadcrumb.vue';
 import Pagination from '@/components/Pagination.vue';
 
 export default {
@@ -159,6 +166,30 @@ export default {
     getPage(page) {
       this.currentPage = page;
       this.getProduct();
+    },
+    addToCart(pid, qty) {
+      this.$bus.$emit('isLoading', { status: true });
+      const data = {
+        data: {
+          product_id: pid,
+          qty,
+        },
+      };
+      this.$hexAxios
+        .post(this.$frontAPI.cart.add(), data)
+        .then((res) => {
+          const { success, message } = res.data;
+          const { product } = res.data.data;
+          this.$bus.$emit('isLoading', { status: false, ms: 2000 });
+          if (success) {
+            this.$bus.$emit('push-message', {
+              style: 'success',
+              title: message,
+              content: `${product.title} x ${qty}`,
+            });
+          }
+        })
+        .then(this.$bus.$emit('cartList', 1500));
     },
   },
   created() {

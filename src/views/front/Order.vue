@@ -32,9 +32,9 @@
   <FrontProductAdLike title="熱賣商品"></FrontProductAdLike>
 </template>
 <script>
-import FrontBanner from '@/components/FrontBanner.vue';
-import FrontProgressStep from '@/components/FrontProgressStep.vue';
-import FrontProductAdLike from '@/components/FrontProductAdLike.vue';
+import FrontBanner from '@/components/front/Banner.vue';
+import FrontProgressStep from '@/components/front/ProgressStep.vue';
+import FrontProductAdLike from '@/components/front/ProductAdLike.vue';
 
 export default {
   inject: ['shoppingCart'],

@@ -33,7 +33,11 @@
             <div class="rooms__img position-relative">
               <img src="@/assets/image/room1.jpeg" class="card-img-top rounded-0" alt="room1" />
               <div class="d-flex justify-content-center align-items-center rooms__box">
-                <button class="btn btn-outline-white me-4">查看更多</button>
+                <router-link
+                class="btn btn-outline-white me-4"
+                :to="{ name: 'front.product', params: { id: '-MdWlAFTt0e9eSX89sLE' } }"
+                >查看更多</router-link
+              >
                 <button class="btn btn-outline-white">放入購物車</button>
               </div>
             </div>
@@ -51,7 +55,11 @@
             <div class="rooms__img position-relative">
               <img src="@/assets/image/room3.jpeg" class="card-img-top rounded-0" alt="room3" />
               <div class="d-flex justify-content-center align-items-center rooms__box">
-                <button class="btn btn-outline-white me-4">查看更多</button>
+                <router-link
+                  class="btn btn-outline-white me-4"
+                  :to="{ name: 'front.product', params: { id: '-MdWkvQsoQrfe0LBzKpr' } }"
+                  >查看更多</router-link
+                >
                 <button class="btn btn-outline-white">放入購物車</button>
               </div>
             </div>
@@ -69,7 +77,11 @@
             <div class="rooms__img position-relative">
               <img src="@/assets/image/room2.jpeg" class="card-img-top rounded-0 img-fluid" alt="room2" />
               <div class="d-flex justify-content-center align-items-center rooms__box">
-                <button class="btn btn-outline-white me-4">查看更多</button>
+                <router-link
+                class="btn btn-outline-white me-4"
+                :to="{ name: 'front.product', params: { id: '-MdWkg-__22eax_wlOJ1' } }"
+                >查看更多</router-link
+              >
                 <button class="btn btn-outline-white">放入購物車</button>
               </div>
             </div>
@@ -187,7 +199,7 @@
   <div class="bg-light coupon py-11">
     <div class="col-4 mx-auto d-flex flex-column justify-content-between align-items-center">
       <h2 class="mb-6 text-white">今日優惠</h2>
-      <button class="btn btn-outline-white btn-lg">找到更多</button>
+      <button class="btn btn-outline-white btn-lg">取得折扣碼</button>
     </div>
   </div>
   <section class="py-9 mb-9">
@@ -198,7 +210,7 @@
   </section>
 </template>
 <script>
-import Gallery from '@/components/Gallery.vue';
+import Gallery from '@/components/front/Gallery.vue';
 
 export default {
   props: ['isNavbarDark'],

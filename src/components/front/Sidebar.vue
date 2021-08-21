@@ -8,7 +8,7 @@
     </div>
     <div class="offcanvas-body pt-0">
       <section class="shopping position-relative" v-if="shoppingCart.cart.carts.length > 0">
-        <div class="shopping__list pe-2 mb-3">
+        <div class="shopping__list pe-2 mb-2">
           <div
             v-for="item in shoppingCart.cart.carts"
             :key="item.id"
@@ -32,7 +32,7 @@
             </div>
           </div>
         </div>
-        <div class="row h5 text-secondary">
+        <div class="row h5 text-secondary mb-3">
           <div class="ms-auto col-4">小計：</div>
           <div class="col-4">{{ $filters.currency(shoppingCart.cart.total) }}</div>
         </div>
@@ -45,7 +45,7 @@
         >
       </section>
       <section v-else>
-        <h3 class="text-center text-secondary py-6 mb-3 border border-1">您尚未選擇任何服務喔</h3>
+        <h3 class="fs-4 text-center text-secondary py-6 mb-3 border border-1">您尚未選擇任何服務喔</h3>
         <router-link data-bs-dismiss="offcanvas" class="btn btn-outline-primary w-100" :to="{ name: 'front.products' }"
           >來去逛逛</router-link
         >
