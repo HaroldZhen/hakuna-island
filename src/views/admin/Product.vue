@@ -112,10 +112,7 @@ export default {
     };
   },
   created() {
-    const authTOKEN = document.cookie.replace(/(?:(?:^|.*;\s*)hexToken\s*=\s*([^;]*).*$)|^.*$/, '$1');
-    hexAxios.defaults.headers.common.Authorization = authTOKEN;
     this.tempProduct = this.defaultProduct();
-    this.checkUser();
   },
   mounted() {},
   methods: {
@@ -128,18 +125,6 @@ export default {
         imagesUrl: [],
       };
     },
-    async checkUser() {
-      await hexAxios
-        .post(api.check)
-        .then((res) => {
-          const { success } = res.data;
-          if (success) {
-            this.getProduct();
-          } else {
-            this.$router.push({ name: 'admin.login' });
-          }
-        });
-    },
     getProduct() {
       const { total_pages: totalPages = 5 } = this.pages;
       this.currentPage = this.currentPage > totalPages ? totalPages : this.currentPage;
@@ -151,15 +136,13 @@ export default {
         showConfirmButton: false,
         timer: 1000,
       });
-      hexAxios
-        .get(api.product.page(this.currentPage))
-        .then((res) => {
-          const { success: isSuccess = false, products, pagination } = res.data;
-          if (isSuccess) {
-            this.products = Object.values(products).map((item) => item);
-            this.pages = { ...pagination };
-          }
-        });
+      hexAxios.get(api.product.page(this.currentPage)).then((res) => {
+        const { success: isSuccess = false, products, pagination } = res.data;
+        if (isSuccess) {
+          this.products = Object.values(products).map((item) => item);
+          this.pages = { ...pagination };
+        }
+      });
     },
     newOrUpdateProduct(tempProduct) {
       this.$refs.productModal.modal.hide();
@@ -178,21 +161,19 @@ export default {
       }
     },
     addProducts(data) {
-      hexAxios
-        .post(api.product.path, data)
-        .then((res) => {
-          const { success: isSuccess = false } = res.data;
-          if (isSuccess) {
-            this.$swal({
-              title: data.data.title,
-              icon: 'success',
-              showConfirmButton: false,
-              timer: 1000,
-            }).then(() => {
-              this.getProduct();
-            });
-          }
-        });
+      hexAxios.post(api.product.path, data).then((res) => {
+        const { success: isSuccess = false } = res.data;
+        if (isSuccess) {
+          this.$swal({
+            title: data.data.title,
+            icon: 'success',
+            showConfirmButton: false,
+            timer: 1000,
+          }).then(() => {
+            this.getProduct();
+          });
+        }
+      });
     },
     addImage(tempImage) {
       const { imagesUrl = [] } = this.tempProduct;
@@ -200,40 +181,36 @@ export default {
       this.tempProduct.imagesUrl = imagesUrl;
     },
     updateProduct(data) {
-      hexAxios
-        .put(api.product.src(data.data.id), data)
-        .then((res) => {
-          const { success: isSuccess = false } = res.data;
-          if (isSuccess) {
-            this.$swal({
-              icon: 'success',
-              title: '更新成功',
-              showConfirmButton: false,
-              timer: 1000,
-            }).then(() => {
-              this.getProduct();
-            });
-          }
-        });
+      hexAxios.put(api.product.src(data.data.id), data).then((res) => {
+        const { success: isSuccess = false } = res.data;
+        if (isSuccess) {
+          this.$swal({
+            icon: 'success',
+            title: '更新成功',
+            showConfirmButton: false,
+            timer: 1000,
+          }).then(() => {
+            this.getProduct();
+          });
+        }
+      });
     },
     deleteProduct(id) {
       this.$refs.deleteModal.modal.hide();
       this.products = [];
-      hexAxios
-        .delete(api.product.src(id))
-        .then((res) => {
-          const { success: isSuccess = false } = res.data;
-          if (isSuccess) {
-            this.$swal({
-              title: '刪除成功',
-              icon: 'success',
-              showConfirmButton: false,
-              timer: 1000,
-            }).then(() => {
-              this.getProduct();
-            });
-          }
-        });
+      hexAxios.delete(api.product.src(id)).then((res) => {
+        const { success: isSuccess = false } = res.data;
+        if (isSuccess) {
+          this.$swal({
+            title: '刪除成功',
+            icon: 'success',
+            showConfirmButton: false,
+            timer: 1000,
+          }).then(() => {
+            this.getProduct();
+          });
+        }
+      });
     },
     deleteImage(index) {
       this.tempProduct.imagesUrl.splice(index, 1);

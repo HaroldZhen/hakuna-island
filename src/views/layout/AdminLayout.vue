@@ -18,7 +18,7 @@
                     </div>
                   </li>
                   <li class="d-inline-block px-2">
-                    <a href="/logout" @click.prevent="logout">
+                    <a href="" @click.prevent="logout">
                       <i class="bi bi-box-arrow-left" style="font-size: 1.5rem;"></i>
                     </a>
                   </li>
@@ -35,7 +35,6 @@
           <div class="main">
             <div class="d-flex flex-column p-3 w-100">
               <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
-                <!-- <span class="fs-4">後台管理</span> -->
                 <div class="d-flex flex-column align-items-center">
                   <div class="rounded-pill border border-light overflow-hidden">
                     <img class="img-fluid" src="https://randomuser.me/api/portraits/men/3.jpg" alt="" />
@@ -71,11 +70,6 @@
                     ><i class="bi bi-book-fill p-1" style="font-size: 1.5rem;"></i>電話接單
                   </router-link>
                 </li>
-                <!-- <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="bi bi-bootstrap-reboot p-1" style="font-size: 1.5rem;"></i>原始設定
-                </a>
-              </li> -->
                 <li class="nav-item">
                   <router-link :to="{ name: 'front.index' }" class="nav-link"
                     ><i class="bi bi-shop p-1" style="font-size: 1.5rem;"></i>前台</router-link
@@ -99,6 +93,11 @@
 import { hexAxios, api } from '@/response/hexAxios';
 
 export default {
+  created() {
+    const authTOKEN = document.cookie.replace(/(?:(?:^|.*;\s*)hexToken\s*=\s*([^;]*).*$)|^.*$/, '$1');
+    hexAxios.defaults.headers.common.Authorization = authTOKEN;
+    this.checkUser();
+  },
   methods: {
     logout() {
       hexAxios.post(api.logout).then((res) => {
@@ -115,6 +114,18 @@ export default {
           this.$router.push({ name: 'admin.login' });
         }
       });
+    },
+    async checkUser() {
+      await hexAxios
+        .post(api.check)
+        .then((res) => {
+          const { success } = res.data;
+          if (success) {
+            this.getProduct();
+          } else {
+            this.$router.push({ name: 'admin.login' });
+          }
+        });
     },
   },
 };

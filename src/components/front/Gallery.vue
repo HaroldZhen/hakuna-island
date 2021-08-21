@@ -4,7 +4,7 @@
       <template v-for="(gallery, index) in galleries" :key="index">
         <swiper
           class="mb-3"
-          :slidesPerView="6"
+          :slidesPerView="auto"
           :space-between="16"
           :loop="true"
           :allowTouchMove="false"

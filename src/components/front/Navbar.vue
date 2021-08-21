@@ -3,11 +3,6 @@
     <div class="container-fluid container-lg">
       <router-link class="navbar-brand me-auto font-pacifico" :to="{ name: 'front.index' }">Hakuna Island</router-link>
       <div class="navbar-nav d-flex flex-row order-md-last">
-        <a class="nav__icon me-2" href="#"
-          ><span class="material-icons">
-            favorite_border
-          </span>
-        </a>
         <a
           class="nav__icon position-relative p-2"
           href="#"
@@ -56,7 +51,6 @@
       <span class="scroll-top__text fw-bolder">Top</span>
     </a>
   </div>
-  <div id="navbar"></div>
 </template>
 <script>
 import FrontSidebar from '@/components/front/Sidebar.vue';

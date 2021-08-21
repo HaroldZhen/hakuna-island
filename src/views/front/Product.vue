@@ -40,13 +40,6 @@
             </div>
           </div>
         </div>
-
-        <div class="productsDetails-description pt-3 mb-6">
-          <div class="d-flex align-items-center mb-3">
-            <h3 class="ml-2 mb-0">特色介紹</h3>
-          </div>
-          <p class="mb-5 text-secondary">{{ product.description }}</p>
-        </div>
       </div>
     </div>
   </div>

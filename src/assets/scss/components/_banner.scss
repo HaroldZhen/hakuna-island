@@ -26,3 +26,17 @@
     font-size: 5rem;
   }
 }
+@include media-breakpoint-down(md) {
+  .banner {
+    &__title {
+      font-size: 4.5rem;
+    }
+  }
+}
+@include media-breakpoint-down(sm) {
+  .banner {
+    &__title {
+      font-size: 3rem;
+    }
+  }
+}

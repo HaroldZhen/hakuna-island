@@ -104,8 +104,7 @@ export default {
             const { article } = res.data;
             this.openModal({ isNew: false, item: article });
           }
-        })
-        .then(() => {});
+        });
     },
     newOrUpdateArticle(tempArticle) {
       const data = {

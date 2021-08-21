@@ -20,7 +20,7 @@
       <div class="py-9">
         <h2 class="mb-4 fs-4">辛苦一整年給自己和家人來點獎勵</h2>
         <div class="col">
-          <p class="w-50 mx-auto text-secondary">
+          <p class="w-100 w-md-50 mx-auto text-secondary">
             想像一個僻靜的島嶼，擁有明亮的白色沙灘，一個充滿深藍色和海藍寶石的潟湖， 以及在微風中搖曳的高聳椰子樹。
             鋪砌的小路網絡蜿蜒穿過鬱鬱蔥蔥的土地，連接海濱住宿、美食餐廳、體育設施和令人振奮的水療中心。
             這就是哈庫島度假村，等待您體驗難忘的體驗。
@@ -162,7 +162,7 @@
         <img src="@/assets/image/food2.jpeg" alt="food2" class="img-fluid" />
       </div>
       <div class="col-md-6 m-auto text-center px-6" data-aos="fade-left" data-aos-easing="linear">
-        <h3 class="mb-3 fs-4">海鮮餐廳</h3>
+        <h3 class="mb-3 mt-3 mt-md-0 fs-4">海鮮餐廳</h3>
         <p class="text-secondary lh-lg">
           品嚐最新鮮的哈庫島海鮮 位於珊瑚礁邊緣的海鮮餐廳，您可以在這裡欣賞印度洋上令人嘆為觀止的日出。
           它提供獨特的用餐體驗和輕鬆的氛圍，並供應包括哈庫島特有種龍蝦在內的各種海鮮。
@@ -174,7 +174,7 @@
         <img src="@/assets/image/food1.jpeg" alt="" class="img-fluid" />
       </div>
       <div class="col-md-6 m-auto text-center px-6" data-aos="fade-right" data-aos-easing="linear">
-        <h3 class="mb-3 fs-4">阿特爾自助餐聽</h3>
+        <h3 class="mb-3 mt-3 mt-md-0 fs-4">阿特爾自助餐聽</h3>
         <p class="text-secondary lh-lg">
           美味佳餚，美景盡收眼底 了解為什麼哈庫島度假村和水療中心的主餐廳年復一年被認為是哈庫島最好的餐廳之一。
           這家微風習習的餐廳供應豐盛的自助式早餐、午餐和晚餐，完美地體現了島嶼精神和迷人的太平洋景色。
@@ -187,7 +187,7 @@
         <img src="@/assets/image/food3.jpeg" alt="" class="img-fluid" />
       </div>
       <div class="col-md-6 m-auto text-center px-6" data-aos="fade-left" data-aos-easing="linear">
-        <h3 class="mb-3 fs-4">客房服務</h3>
+        <h3 class="mb-3 mt-3 mt-md-0 fs-4">客房服務</h3>
         <p class="text-secondary lh-lg">
           當您不想離開舒適的房間，而不必擔心吃飯或喝水的時間時。
           無論是早餐、午餐還是晚餐，別墅內用餐都將我們餐廳的高水平服務和烹飪體驗帶到您房間的私密空間。
@@ -197,7 +197,7 @@
     </div>
   </div>
   <div class="bg-light coupon py-11">
-    <div class="col-4 mx-auto d-flex flex-column justify-content-between align-items-center">
+    <div class="col-12 col-md-4 mx-auto d-flex flex-column justify-content-between align-items-center">
       <h2 class="mb-6 text-white">今日優惠</h2>
       <button class="btn btn-outline-white btn-lg">取得折扣碼</button>
     </div>
