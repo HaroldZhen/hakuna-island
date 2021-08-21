@@ -62,8 +62,8 @@
 <script>
 import { hexAxios, api } from '@/response/hexAxios';
 
-import OrderModal from '@/components/OrderModal.vue';
-import DeleteModal from '@/components/DeleteModal.vue';
+import OrderModal from '@/components/admin/OrderModal.vue';
+import DeleteModal from '@/components/admin/DeleteModal.vue';
 import Pagination from '@/components/Pagination.vue';
 
 export default {

@@ -6,8 +6,8 @@
   <ProductModal></ProductModal>
 </template>
 <script>
-import DeleteModal from '@/components/DeleteModal.vue';
-import ProductModal from '@/components/ProductModal.vue';
+import DeleteModal from '@/components/admin/DeleteModal.vue';
+import ProductModal from '@/components/admin/ProductModal.vue';
 
 export default {
   components: {

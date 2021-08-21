@@ -43,8 +43,8 @@
 <script>
 import { hexAxios, api } from '@/response/hexAxios';
 
-import CouponModal from '@/components/CouponModal.vue';
-import DeleteModal from '@/components/DeleteModal.vue';
+import CouponModal from '@/components/admin/CouponModal.vue';
+import DeleteModal from '@/components/admin/DeleteModal.vue';
 import Pagination from '@/components/Pagination.vue';
 
 export default {

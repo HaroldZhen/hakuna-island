@@ -94,8 +94,8 @@
 <script>
 import { hexAxios, api } from '@/response/hexAxios';
 import Pagination from '@/components/Pagination.vue';
-import DeleteModal from '@/components/DeleteModal.vue';
-import ProductModal from '@/components/ProductModal.vue';
+import DeleteModal from '@/components/admin/DeleteModal.vue';
+import ProductModal from '@/components/admin/ProductModal.vue';
 
 export default {
   components: {
