@@ -37,8 +37,11 @@ export default {
       }, ms);
     });
   },
+  unmounted() {
+    this.$bus.$off('isLoading', () => {});
+  },
 };
 </script>
 <style lang="scss">
-  @import '@/assets/all';
+@import '@/assets/all';
 </style>

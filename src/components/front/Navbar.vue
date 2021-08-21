@@ -7,7 +7,6 @@
           ><span class="material-icons">
             favorite_border
           </span>
-          <!-- <span class="material-icons">favorite</span> -->
         </a>
         <a
           class="nav__icon position-relative p-2"
@@ -39,11 +38,7 @@
           <router-link class="nav-item nav-link me-4" :to="{ name: 'front.index' }"
             >首頁<span class="sr-only">(current)</span></router-link
           >
-          <router-link
-            :to="{ name: 'front.products' }"
-            class="nav-item nav-link me-4"
-            >服務項目</router-link
-          >
+          <router-link :to="{ name: 'front.products' }" class="nav-item nav-link me-4">服務項目</router-link>
           <router-link class="nav-item nav-link me-4" :to="{ name: 'front.about' }">關於我們</router-link>
         </div>
       </div>
@@ -75,7 +70,6 @@ export default {
   },
   data() {
     return {
-      // isBgWhite: this.isNavbarDark,
       isNavbarLight: false,
       isScrollTopActive: false,
     };
@@ -112,6 +106,9 @@ export default {
       const banner = document.querySelector('#banner');
       this.isNavbarLight = windowY > banner.offsetHeight - 110;
     });
+  },
+  unmounted() {
+    window.removeEventListener('scroll');
   },
 };
 </script>

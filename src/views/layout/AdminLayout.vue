@@ -119,7 +119,7 @@ export default {
   },
 };
 </script>
-<style lang="scss">
+<style scoped lang="scss">
 .admin-wrap {
   background-color: #f9fafd;
 }

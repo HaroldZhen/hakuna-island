@@ -21,5 +21,8 @@ export default {
       this.messages.push({ style, title, content });
     });
   },
+  unmounted() {
+    this.$bus.$off('push-message', () => {});
+  },
 };
 </script>

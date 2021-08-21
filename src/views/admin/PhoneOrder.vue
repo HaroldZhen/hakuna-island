@@ -297,7 +297,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped lang="scss">
 .phone-carts {
   max-height: 400px;
   overflow: auto;

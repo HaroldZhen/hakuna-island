@@ -109,7 +109,7 @@ export default {
   },
 };
 </script>
-<style lang="scss">
+<style scoped lang="scss">
 @import '@/assets/all';
 .login {
   background-color: #f9fafd;
