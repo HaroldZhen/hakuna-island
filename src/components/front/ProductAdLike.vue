@@ -10,7 +10,6 @@
                 <div>
                   <img :src="product.imageUrl" class="card-img-top rounded-0" :alt="product.title" />
                 </div>
-                <a href="#" class="text-dark"> </a>
                 <div class="card-body">
                   <h5 class="mb-0">
                     <router-link class="stretched-link" :to="{ name: 'front.product', params: { id: product.id } }">{{
@@ -23,7 +22,6 @@
                       ><del>{{ $filters.currency(product.origin_price) }}</del></span
                     >
                   </p>
-                  <p class="text-muted mt-3"></p>
                 </div>
               </div>
             </div>
