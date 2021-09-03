@@ -17,17 +17,3 @@ https://haroldzhen.github.io/hakuna-island/#/
 + RWD
 + SCSS
 + Bootstrap5
-
-## 內容介紹
-...
-
-## 使用外掛
-...
-
-## 耗費工時
-目前已花費約3個工作天。
-
-## 感謝
-...
-## 內容來源
-...
